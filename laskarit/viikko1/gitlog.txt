@@ -1,0 +1,104 @@
+Author: Saara Satokangas <saarasat@users.noreply.guthub.com>
+Date:   Fri Mar 15 11:16:19 2019 +0200
+
+    poistettiin file1 ja muutettiin file2 nimeä
+
+ tiedostoja/file2.txt                 | 0
+ tiedostoja/{file1.txt => file22.txt} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 5c90400a3cb19cc105088cf31f88d74d4d230b3e
+Author: Saara Satokangas <saarasat@users.noreply.guthub.com>
+Date:   Fri Mar 15 11:11:05 2019 +0200
+
+    lisättiin filet 1,2 ja 3
+
+ tiedostoja/file1.txt | 0
+ tiedostoja/file2.txt | 0
+ tiedostoja/file3.txt | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit cbe62f763d14612a59e7ef605c9ce37e9031da74
+Author: Saara Satokangas <saarasat@users.noreply.guthub.com>
+Date:   Fri Mar 15 11:05:47 2019 +0200
+
+    muuteltiin ekaa ja kolmatta
+
+ eka.txt    | 4 ++++
+ kolmas.txt | 2 ++
+ 2 files changed, 6 insertions(+)
+
+commit 1ce878cfc7a09e7912c427334625a2233485336a
+Author: Saara Satokangas <saarasat@users.noreply.guthub.com>
+Date:   Fri Mar 15 11:03:56 2019 +0200
+
+    uudelleennimeäminen
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit bec1bcc5acc704b36ce22d0cb7bc397934ebad21
+Author: Saara Satokangas <saarasat@users.noreply.guthub.com>
+Date:   Fri Mar 15 11:03:06 2019 +0200
+
+    poistettiin toinen.txt
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit c8694b5a00f1a408dcce7d0c09e4a97637d1f4a7
+Author: Saara Satokangas <saarasat@users.noreply.guthub.com>
+Date:   Fri Mar 15 11:01:03 2019 +0200
+
+    lisätty tiedosto.txt:hen tekstiä
+
+ tiedosto.txt | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+commit ae8cbd60e3f353a204d6a36637ee27ac8ff13b19
+Author: Saara Satokangas <saarasat@users.noreply.guthub.com>
+Date:   Fri Mar 15 10:59:02 2019 +0200
+
+    lisättiin stuff-hakemisto
+
+ stuff/uusi.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit d169f4039ac7943c4e8ade9b573fa854223cd6cd
+Author: Saara Satokangas <saarasat@users.noreply.guthub.com>
+Date:   Fri Mar 15 10:57:36 2019 +0200
+
+    muutettu tokaa ja kolmatta
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit e2461e5c4a0afb29f2183ed5cdf394f698217ecd
+Author: Saara Satokangas <saarasat@users.noreply.guthub.com>
+Date:   Fri Mar 15 10:56:35 2019 +0200
+
+    lisätty kolmas.txt
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 2adacc50ff39d164ebe76b5121e76a3f2b31f0d3
+Author: Saara Satokangas <saarasat@users.noreply.guthub.com>
+Date:   Fri Mar 15 10:55:25 2019 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit a3402ee4154db9c27a30be9f3b0cd11dba647f02
+Author: Saara Satokangas <saarasat@users.noreply.guthub.com>
+Date:   Fri Mar 15 10:50:02 2019 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
