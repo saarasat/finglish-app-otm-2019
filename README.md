@@ -9,8 +9,6 @@ Contains the exercises done throughout the weeks.
 
 ### Week 1
 
-gitlog.txt
+[gitlog.txt](https://github.com/saarasat/finglish-app-otm-2019/blob/master/laskarit/viikko1/gitlog.txt)
 
-komentorivi.txt
-
-
+[komentorivi.txt](https://github.com/saarasat/finglish-app-otm-2019/blob/master/laskarit/viikko1/komentorivi.txt)
