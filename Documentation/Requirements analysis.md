@@ -10,7 +10,7 @@ Finglish will work as a simple quiz game, where the user/player will be showed q
 
 An example question can be for instance: _“Mikä on viestistä käytettävä nimitys TCP:n linkkikerroksella?” / “What is the name used for a message used on the link layer of TCP?_
 
-## Userroles
+## User roles
 
 ### 1. User
 
