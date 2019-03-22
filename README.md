@@ -21,3 +21,8 @@ Contains the exercises done throughout the weeks.
 
 ### Week 2
 
+[Maksukortti-tests](https://github.com/saarasat/finglish-app-otm-2019/blob/master/WeeklyExercises/week2/Maksukortti/test/MaksukorttiTest.java)
+
+[Unicafe-tests](https://github.com/saarasat/finglish-app-otm-2019/blob/master/WeeklyExercises/week2/unicafe-tests.png)
+
+
