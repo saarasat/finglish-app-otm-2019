@@ -11,15 +11,22 @@ import java.util.Random;
 
 public class Game {
     
+    private int id; 
     private List<Question> allQuestions;
     private List<Integer> usedQuestions;
     private Random random;
     private Question question;
+    private int questionCounter;
     
     public Game() {
         this.allQuestions = new ArrayList<>();
         this.usedQuestions = new ArrayList<>();
         this.random = new Random();
+        this.questionCounter = 0;
+    }
+    
+    public int getId() {
+        return this.id;
     }
     
     public Question getNextQuestion() {

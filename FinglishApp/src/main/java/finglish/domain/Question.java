@@ -19,7 +19,7 @@ public class Question {
             this.answerOptions[1] = second;
             this.answerOptions[2] = third;
             this.answerOptions[3] = fourth;
-            this.correctAnswer = correctAnswer;
+            this.correctAnswer = correctAnswer;       
     }       
     
     
@@ -38,6 +38,10 @@ public class Question {
     public String getCorrectAnswer() {
         return this.correctAnswer;
     }
+
+    public int getOptionCounter() {
+        return this.counter;
+    }
     
     public void setId() {
         this.id = id;
@@ -46,11 +50,7 @@ public class Question {
     public void setQuestion(String question) {
         this.question = question;
     }
-    
-    public void setOption(String option) {
-        this.answerOptions[this.answerOptions.length] = option;
-    }
-        
+            
     public boolean checkIfCorrect(String answered) {
         if (answered.equals(this.correctAnswer)) {
            return true;
