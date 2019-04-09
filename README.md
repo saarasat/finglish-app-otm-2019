@@ -14,7 +14,7 @@ _A Finnish-English-gaming-app. App teaches people Finnish computer science -term
 ### Testing
 Testing can be done with the command:
 
-> mvn test
+<pre><code>mvn test</code></pre>
 
 Test coverage can be checked with the command:
 
