@@ -1,0 +1,19 @@
+1;Mitä nimeä Internetissä lähetettävästä viestistä käytetään sovelluskerroksella?;kehys;sanoma;segmentti;datagrammi;sanoma
+2;Mitä nimeä Internetissä lähetettävästä viestistä käytetään kuljetuskerroksella?;segmentti;kehys;paketti;sanoma;segmentti
+3;Mitä nimeä Internetissä lähetettävästä viestistä voidaan käyttää verkkokerroksella?;datagrammi;kehys;segmentti;sanoma;datagrammi
+4;Mitä nimeä Internetissä lähetettävästä viestistä käytetään linkkikerroksella?;kehys;datagrammi;sanoma;segmentti;kehys
+9;Mihin Internetin lyhenteeseen liittyy nimipalvelin?;DNS;ISP;HTTP;LAN;DNS
+10;Millä seuraavista komentorivin kyselyistä saat tietää IP-osoitteita?;nslookup;getIp;getNS;DNSlookup;nslookup
+11;Mikä seuraavista lyhenteistä liittyy videoiden siirtoon Internetissä?;DASH;POP3;ARPA;SMTP;DASH
+12;Mitä lyhennettä voidaan käyttää esimerkiksi operaattoreista, kuten DNA, Elisa tai Telia?;ISP;API;UTP;RSA;ISP
+14;Minkä Internetin kerroksen protokolla TCP on?;verkkokerroksen;linkkikerroksen;sovelluskerroksen;kuljetuskerroksen;verkkokerroksen
+15;Mikä on suomenkielinen nimitys tietoliikenteen termille transmission rate?;siirtonopeus;liikkumisnopeus;liikenopeus;kuljetusnopeus;siirtonopeus
+16;Mikä seuraavista on protokolla, joka varmistaa tietojen perille pääsyn?;TCP;UDP;ISP;TDM;TCP
+17;Mikä ei ole Internetin viivetyyppi?;prosessointiviive;siirtoviive;jonotusviive;monistusviive;monistusviive
+19;Mikä on englanninkielinen nimitys evästeelle?;cookie;add-on;application;addition;cookie
+20;Mikä seuraavista auttaa web-sivuja ylläpitämään tietoa käyttäjistä?;eväste;konsoli;DNS;SMTP;eväste
+21;Mikä on englanninkielinen termi verkkovälimuistille?;net cache;proxy server;internet cache;server cache;proxy server
+22;Mikä statuskoodi kertoo, että HTTP-pyyntö onnistui?;200;404;300;401;200
+23;Miltä selaimen konsolin välilehdeltä voi tarkastella mm. HTTP-pyyntöjen sujumista?;Sources;Memory;Performance;Network;Network
+24;Mikä seuraavista kerroksista ei kuulu perinteiseen Internetin kerrosten kuvaukseen?;sovelluskerros;fyysinen kerros;linkkikerros;esityskerros;esityskerros
+25;Montako kerrosta on OSI-mallissa?;4;6;8;7;7

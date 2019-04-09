@@ -13,27 +13,24 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 
 
-import finglish.domain.Game;
+import finglish.domain.GameService;
 import finglish.domain.Question;
 
-/**
- *
- * @author saarasat
- */
 public class GameView {
     
-    private Game game;
+    private GameService gameService;
     private Question question;
     
-    public GameView(Game game) {
-        this.game = game;
+    public GameView(GameService gameService) {
+        this.gameService = gameService;
     }
     
     public Parent getView() {
         
         GridPane setting = new GridPane();
         
-        question = game.getNextQuestion();
+        gameService.startANewGame();
+        question = gameService.getTheNextQuestion();        
         
         Label questionLabel = new Label(question.getQuestion());
         Button option1 = new Button(question.getOption());

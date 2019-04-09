@@ -12,16 +12,13 @@ import java.util.Random;
 public class Game {
     
     private int id; 
-    private List<Question> allQuestions;
-    private List<Integer> usedQuestions;
-    private Random random;
-    private Question question;
+    private List<Question> gameQuestions;
+    private List<Integer> answeredQuestions;
     private int questionCounter;
     
-    public Game() {
-        this.allQuestions = new ArrayList<>();
-        this.usedQuestions = new ArrayList<>();
-        this.random = new Random();
+    public Game(ArrayList<Question> gameQuestions) {
+        this.gameQuestions = gameQuestions;
+        this.answeredQuestions = new ArrayList<>();
         this.questionCounter = 0;
     }
     
@@ -29,28 +26,19 @@ public class Game {
         return this.id;
     }
     
-    public Question getNextQuestion() {
-        int index = this.random.nextInt(allQuestions.size());
-        this.question = allQuestions.get(index);
-        if (!usedQuestions.contains(index)) {
-            usedQuestions.add(question.getId());
-            this.question.shuffleOptions();
-        } else {
-            getNextQuestion();
-        }
-        return this.question;
+    public int getAmountOfCorrectAnswers() {
+        return 5;
     }
     
-    public boolean answerTheQuestion(String option) {
-        if (this.question.getCorrectAnswer().equals(option)) {
-            return true;
-        }
-        return false;
+    public void setAmountOfCorrectAnswers() {
+        
     }
     
-    public void addQuestion(Question question) {
-        System.out.println(question.getCorrectAnswer());
-        this.allQuestions.add(question);
+    public String getTotalScore() {
+        return "5/10 oikein";
     }
+            
+    
+
       
 }

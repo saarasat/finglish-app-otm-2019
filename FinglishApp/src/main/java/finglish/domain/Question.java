@@ -13,13 +13,14 @@ public class Question {
     private int counter;
     
     public Question(String question, String first, String second, String third, String fourth, String correctAnswer) {
-            this.question = question;
-            this.answerOptions = new String[4];
-            this.answerOptions[0] = first;
-            this.answerOptions[1] = second;
-            this.answerOptions[2] = third;
-            this.answerOptions[3] = fourth;
-            this.correctAnswer = correctAnswer;       
+        this.id = 0;
+        this.question = question;
+        this.answerOptions = new String[4];
+        this.answerOptions[0] = first;
+        this.answerOptions[1] = second;
+        this.answerOptions[2] = third;
+        this.answerOptions[3] = fourth;
+        this.correctAnswer = correctAnswer;       
     }       
     
     
@@ -43,7 +44,7 @@ public class Question {
         return this.counter;
     }
     
-    public void setId() {
+    public void setId(int id) {
         this.id = id;
     }
     
@@ -52,16 +53,13 @@ public class Question {
     }
             
     public boolean checkIfCorrect(String answered) {
-        if (answered.equals(this.correctAnswer)) {
-           return true;
-        }
-       return false;
+        return answered.equals(this.correctAnswer);
     }
     
-    public String getOption(){   
+    public String getOption() {   
         if (counter < 4) {
             counter++;
-            return answerOptions[counter-1];    
+            return answerOptions[counter - 1];    
         }
         return "";
     }
@@ -71,7 +69,7 @@ public class Question {
         String handled;
         Random random = new Random();
         for (int i = 3; i > 0; i--) {
-            index = random.nextInt(i+1);
+            index = random.nextInt(i + 1);
             handled = answerOptions[index];
             answerOptions[index] = answerOptions[i];
             answerOptions[i] = handled;

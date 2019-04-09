@@ -5,7 +5,7 @@
  */
 package finglish.ui;
 
-import finglish.domain.Game;
+import finglish.domain.GameService;
 import finglish.domain.Question;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -19,10 +19,10 @@ import javafx.scene.layout.GridPane;
     public class AddQuestionsView {
     
         private Question questionToAdd;
-        private Game game;
+        private GameService gameService;
         
-        public AddQuestionsView(Game game) {
-            this.game = game;
+        public AddQuestionsView(GameService gameService) {
+            this.gameService = gameService;
         }
         
         public Parent getView() {
@@ -66,7 +66,7 @@ import javafx.scene.layout.GridPane;
                 fourthOptionText.getText(),
                 correctOptionText.getText());           
             
-            game.addQuestion(questionToAdd);
+            gameService.addQuestion(questionToAdd);
             
             questionText.clear();
             firstOptionText.clear();

@@ -5,7 +5,13 @@
  */
 package finglish.ui;
 
-import finglish.domain.Game;
+import finglish.dao.FileQuestionDao;
+import finglish.dao.QuestionDao;
+
+import java.util.List;
+import java.util.Properties;
+import finglish.domain.GameService;
+import java.io.FileInputStream;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -18,13 +24,22 @@ import javafx.stage.Stage;
 
 public class FinglishAppUi extends Application {
     
+    private GameService gameService;
+    private FileQuestionDao questionDao; 
+    
+    @Override
+    public void init() throws Exception {
+        String file = "questions.txt";        
+        FileQuestionDao questionDao = new FileQuestionDao(file);
+        gameService = new GameService(questionDao);
+    }
+    
+    
     @Override 
     public void start(Stage startScreen) throws Exception {    
         
-        Game game = new Game();
-        
-        GameView gameView = new GameView(game);
-        AddQuestionsView addQuestionsView = new AddQuestionsView(game);
+        GameView gameView = new GameView(gameService);
+        AddQuestionsView addQuestionsView = new AddQuestionsView(gameService);
         
         BorderPane setting = new BorderPane();
         
@@ -37,7 +52,11 @@ public class FinglishAppUi extends Application {
            
         menu.getChildren().addAll(playAGame, addAQuestion);
         
-        playAGame.setOnAction((event) -> setting.setCenter(gameView.getView()));
+        playAGame.setOnMouseClicked((event) -> {
+            setting.setCenter(gameView.getView());
+            gameService.startANewGame();
+        });
+        
         addAQuestion.setOnAction((event) -> setting.setCenter(addQuestionsView.getView()));
        
         setting.setTop(menu);
