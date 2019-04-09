@@ -30,14 +30,6 @@ You can generate an executable jar with the command:
 
 this generates an executable jar-file into the target-folder: target/FinglishApp-1.0-SNAPSHOT.jar
 
-### JavaDoc
-
-JavaDoc can be generated with the command:
-
-<pre><code>mvn javadoc:javadoc</code></pre>
-
-You can check the JavaDoc by opening the following in your browser: target/site/apidocs/index.html
-
 ### Checkstyle
 
 Checks defined in checkstyle.xml can be run through with the command:
