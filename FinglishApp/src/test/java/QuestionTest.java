@@ -42,12 +42,12 @@ public class QuestionTest {
     
     @Test
     public void answerCheckingReturnsTrueWhenTheCorrectAnswerIsGiven() {        
-        assertEquals(true, this.question.checkIfCorrect("correct answer"));
+        assertTrue(this.question.checkIfCorrect("correct answer"));
     }
 
     @Test
     public void answerCheckingReturnsFalseWhenWrongAnswerIsGiven() {        
-        assertEquals(false, this.question.checkIfCorrect("wrong answer"));
+        assertFalse(this.question.checkIfCorrect("wrong answer"));
     }
     
     @Test

@@ -29,9 +29,7 @@ public class GameService {
     }
 
     public void addQuestion(Question question) {
-        System.out.println(question.getCorrectAnswer());
         this.allQuestions.add(question);
-        System.out.println(allQuestions.get(0));
     }
 
     public Question getTheNextQuestion() {
@@ -49,11 +47,9 @@ public class GameService {
     public void startANewGame() {
         this.gameQuestions = new ArrayList<>();
         this.usedQuestions = new ArrayList<>();
-        System.out.println("this sixe " + allQuestions.size());
         for (int i = 0; i < 10; i++) {
            
             int index = this.random.nextInt(allQuestions.size());
-            System.out.println("index " + index);
             Question question = allQuestions.get(index);
             
             if (!gameQuestions.contains(question)) {
