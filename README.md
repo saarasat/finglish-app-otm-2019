@@ -14,7 +14,7 @@ _A Finnish-English-gaming-app. App teaches people Finnish computer science -term
 ### Testing
 Testing can be done with the command:
 
-mvn test
+> mvn test
 
 Test coverage can be checked with the command:
 
@@ -26,7 +26,7 @@ You can check the test coverage report by opening the following in your browser:
 
 You can generate an executable jar with the command:
 
-mvn package
+> mvn package
 
 this generates an executable jar-file into the target-folder:
 
@@ -34,7 +34,7 @@ this generates an executable jar-file into the target-folder:
 
 JavaDoc can be generated with the command:
 
-mvn javadoc:javadoc
+> mvn javadoc:javadoc
 
 You can check the JavaDoc by opening the following in your browser: target/site/apidocs/index.html
 
@@ -42,6 +42,6 @@ You can check the JavaDoc by opening the following in your browser: target/site/
 
 Checks defined in checkstyle.xml can be run through with the command:
 
- mvn jxr:jxr checkstyle:checkstyle
+> mvn jxr:jxr checkstyle:checkstyle
 
 Possible errors you can see by viewing the following in your browser: target/site/checkstyle.html
