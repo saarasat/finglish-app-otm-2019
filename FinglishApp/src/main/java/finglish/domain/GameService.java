@@ -47,8 +47,7 @@ public class GameService {
     public void startANewGame() {
         this.gameQuestions = new ArrayList<>();
         this.usedQuestions = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-           
+        for (int i = 0; i < 10; i++) {       
             int index = this.random.nextInt(allQuestions.size());
             Question question = allQuestions.get(index);
             
@@ -63,5 +62,4 @@ public class GameService {
         this.gameQuestions.clear();
         this.usedQuestions.clear();
     }
-
 }

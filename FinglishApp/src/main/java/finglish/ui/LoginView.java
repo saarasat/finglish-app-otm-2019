@@ -19,6 +19,8 @@ import javafx.scene.layout.GridPane;
  */
 public class LoginView {
     
+    private TextField usernameText; 
+    private TextField passwordText; 
     
     public LoginView() {
        
@@ -28,11 +30,11 @@ public class LoginView {
 
         GridPane setting = new GridPane();
                 
-        Label usernameLabel = new Label("Username:");
-        TextField usernameText = new TextField(); 
-        Label passwordLabel = new Label("Password:");
-        TextField passwordText = new TextField();        
-        Button login = new Button("Login");
+        Label usernameLabel = new Label("Käyttäjätunnus:");
+        usernameText = new TextField(); 
+        Label passwordLabel = new Label("Salasana:");
+        passwordText = new TextField();        
+        
         
         setting.setAlignment(Pos.CENTER);
         setting.setVgap(10);
@@ -46,7 +48,14 @@ public class LoginView {
         
         return setting;
         
-        
+    }
+    
+    public String getUsername() {
+        return usernameText.getText();
+    }
+
+    public String getPassword() {
+        return passwordText.getText();
     }
 
     

@@ -35,19 +35,19 @@ import javafx.scene.layout.GridPane;
         TextField thirdOptionText = new TextField();
         TextField fourthOptionText = new TextField();
         TextField correctOptionText = new TextField();
-        Button addQuestion = new Button("Add");
+        Button addQuestion = new Button("Lisää");
         
         setting.setAlignment(Pos.CENTER);
         setting.setVgap(10);
         setting.setHgap(10);
         setting.setPadding(new Insets(10,10,10,10));
         
-        setting.add(new Label("The question"), 0, 0);
-        setting.add(new Label("Option 1:"), 0, 1);
-        setting.add(new Label("Option 2:"), 0, 2);
-        setting.add(new Label("Option 3:"), 0, 3);
-        setting.add(new Label("Option 4:"), 0, 4);
-        setting.add(new Label("Correct option"), 0, 5);
+        setting.add(new Label("Kysymys"), 0, 0);
+        setting.add(new Label("Vaihtoehto 1:"), 0, 1);
+        setting.add(new Label("Vaihtoehto 2:"), 0, 2);
+        setting.add(new Label("Vaihtoehto 3:"), 0, 3);
+        setting.add(new Label("Vaihtoehto 4:"), 0, 4);
+        setting.add(new Label("Oikea vaihtoehto"), 0, 5);
         setting.add(questionText, 1, 0);
         setting.add(firstOptionText, 1, 1);
         setting.add(secondOptionText, 1, 2);

@@ -9,4 +9,5 @@
     <suppress files="finglish.ui.FinglishAppUi.java" checks="[a-zA-Z0-9]*"/>
     <suppress files="finglish.ui.GameView.java" checks="[a-zA-Z0-9]*"/>
     <suppress files="finglish.ui.LoginView.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="finglish.ui.CreateUserView.java" checks="[a-zA-Z0-9]*"/>
 </suppressions>

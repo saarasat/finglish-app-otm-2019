@@ -7,16 +7,23 @@ package finglish.ui;
 
 import finglish.dao.FileQuestionDao;
 import finglish.dao.QuestionDao;
+import finglish.dao.FileUserDao;
+import finglish.dao.UserDao;
+
+
 
 import java.util.List;
 import java.util.Properties;
 import finglish.domain.GameService;
+import finglish.domain.User;
 import java.io.FileInputStream;
+import java.util.ArrayList;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
@@ -25,13 +32,18 @@ import javafx.stage.Stage;
 public class FinglishAppUi extends Application {
     
     private GameService gameService;
-    private FileQuestionDao questionDao; 
+    private FileQuestionDao questionDao;
+    private FileUserDao userDao;
+    private ArrayList<User> users;
     
     @Override
     public void init() throws Exception {
-        String file = "questions.txt";        
-        FileQuestionDao questionDao = new FileQuestionDao(file);
+        String questionFile = "questions.txt";
+        String userFile = "users.txt";
+        this.questionDao = new FileQuestionDao(questionFile);
+        this.userDao = new FileUserDao(userFile);
         gameService = new GameService(questionDao);
+        
     }
     
     
@@ -40,16 +52,26 @@ public class FinglishAppUi extends Application {
         
         GameView gameView = new GameView(gameService);
         AddQuestionsView addQuestionsView = new AddQuestionsView(gameService);
+        LoginView loginView = new LoginView();
         
         BorderPane setting = new BorderPane();
+
+        HBox loginBox = new HBox();
+        loginBox.setPadding(new Insets(40,40,40,40));
+        loginBox.setSpacing(10);
+        
+        Button loginButton = new Button("Kirjaudu");
+        Label loginInfo = new Label("");
         
         HBox menu = new HBox();
         menu.setPadding(new Insets(20,20,20,20));
         menu.setSpacing(10);
         
-        Button playAGame = new Button("Play");
-        Button addAQuestion = new Button("Add a question");
-           
+        Button playAGame = new Button("Pelaa");
+        Button addAQuestion = new Button("Lisää kysymys");
+        Button logOut = new Button("Kirjaudu ulos"); 
+        
+        loginBox.getChildren().addAll(loginInfo, loginButton);
         menu.getChildren().addAll(playAGame, addAQuestion);
         
         playAGame.setOnMouseClicked((event) -> {
@@ -59,9 +81,36 @@ public class FinglishAppUi extends Application {
         
         addAQuestion.setOnAction((event) -> setting.setCenter(addQuestionsView.getView()));
        
-        setting.setTop(menu);
+        this.users = userDao.getAll();
         
-        Scene start = new Scene(setting, 400, 400);
+        loginButton.setOnMouseClicked((event) -> {
+            String username = loginView.getUsername();
+            System.out.println(username);
+            User user = userDao.findByUsername(loginView.getUsername());
+            if (user == null) {
+                loginInfo.setText("Käyttäjätunnusta ei löydy");
+            }
+            String password = user.getPassword();
+            if (loginView.getPassword().equals(password)) {
+                setting.setCenter(menu);
+                setting.setBottom(logOut);
+            }
+        });
+        
+        logOut.setOnMouseClicked((event) -> {
+        
+            setting.setTop(loginInfo);
+            setting.setBottom(loginBox);
+            setting.setCenter(loginView.getView());
+            
+        });
+        
+        setting.setTop(loginInfo);
+        setting.setBottom(loginBox);
+        setting.setCenter(loginView.getView());
+
+        
+        Scene start = new Scene(setting, 700, 400);
         startScreen.setScene(start);
         startScreen.show();
            

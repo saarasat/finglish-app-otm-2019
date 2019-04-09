@@ -5,6 +5,7 @@
  */
 package finglish.domain;
 
+import finglish.domain.Question;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -13,13 +14,19 @@ public class Game {
     
     private int id; 
     private List<Question> gameQuestions;
-    private List<Integer> answeredQuestions;
+    private List<Question> answeredQuestions;
     private int questionCounter;
+    private int correctAnswers;
     
     public Game(ArrayList<Question> gameQuestions) {
         this.gameQuestions = gameQuestions;
         this.answeredQuestions = new ArrayList<>();
         this.questionCounter = 0;
+        this.correctAnswers = 0;
+    }
+    
+    public void setId(int id){
+        this.id = id;
     }
     
     public int getId() {
@@ -27,15 +34,20 @@ public class Game {
     }
     
     public int getAmountOfCorrectAnswers() {
-        return 5;
+        return correctAnswers;
     }
     
-    public void setAmountOfCorrectAnswers() {
-        
+    public void setACorrectAnswer() {
+        this.correctAnswers++;
+    }
+    
+    public void setAnAnsweredQuestion(Question question) {
+        answeredQuestions.add(question);
+        questionCounter++;
     }
     
     public String getTotalScore() {
-        return "5/10 oikein";
+        return this.correctAnswers + "/10 oikein";
     }
             
     

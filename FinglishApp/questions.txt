@@ -6,7 +6,7 @@
 10;Millä seuraavista komentorivin kyselyistä saat tietää IP-osoitteita?;nslookup;getIp;getNS;DNSlookup;nslookup
 11;Mikä seuraavista lyhenteistä liittyy videoiden siirtoon Internetissä?;DASH;POP3;ARPA;SMTP;DASH
 12;Mitä lyhennettä voidaan käyttää esimerkiksi operaattoreista, kuten DNA, Elisa tai Telia?;ISP;API;UTP;RSA;ISP
-14;Minkä Internetin kerroksen protokolla TCP on?;verkkokerroksen;linkkikerroksen;sovelluskerroksen;kuljetuskerroksen;verkkokerroksen
+14;Minkä Internetin kerroksen protokolla TCP on?;verkkokerroksen;linkkikerroksen;sovelluskerroksen;kuljetuskerroksen;kuljetuskerroksen
 15;Mikä on suomenkielinen nimitys tietoliikenteen termille transmission rate?;siirtonopeus;liikkumisnopeus;liikenopeus;kuljetusnopeus;siirtonopeus
 16;Mikä seuraavista on protokolla, joka varmistaa tietojen perille pääsyn?;TCP;UDP;ISP;TDM;TCP
 17;Mikä ei ole Internetin viivetyyppi?;prosessointiviive;siirtoviive;jonotusviive;monistusviive;monistusviive
