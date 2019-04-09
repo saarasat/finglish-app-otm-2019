@@ -18,7 +18,7 @@ Testing can be done with the command:
 
 Test coverage can be checked with the command:
 
-mvn jacoco:report
+<pre><code>mvn jacoco:report</code></pre>
 
 You can check the test coverage report by opening the following in your browser: target/site/jacoco/index.html
 
@@ -26,7 +26,7 @@ You can check the test coverage report by opening the following in your browser:
 
 You can generate an executable jar with the command:
 
-> mvn package
+<pre><code>mvn package</code></pre>
 
 this generates an executable jar-file into the target-folder:
 
@@ -34,7 +34,7 @@ this generates an executable jar-file into the target-folder:
 
 JavaDoc can be generated with the command:
 
-> mvn javadoc:javadoc
+<pre><code>mvn javadoc:javadoc</code></pre>
 
 You can check the JavaDoc by opening the following in your browser: target/site/apidocs/index.html
 
@@ -42,6 +42,6 @@ You can check the JavaDoc by opening the following in your browser: target/site/
 
 Checks defined in checkstyle.xml can be run through with the command:
 
-> mvn jxr:jxr checkstyle:checkstyle
+<pre><code>mvn jxr:jxr checkstyle:checkstyle</code></pre>
 
 Possible errors you can see by viewing the following in your browser: target/site/checkstyle.html
