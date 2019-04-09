@@ -22,13 +22,13 @@ Test coverage can be checked with the command:
 
 You can check the test coverage report by opening the following in your browser: target/site/jacoco/index.html
 
-### Executable jar:
+### Executable jar
 
 You can generate an executable jar with the command:
 
 <pre><code>mvn package</code></pre>
 
-this generates an executable jar-file into the target-folder:
+this generates an executable jar-file into the target-folder: target/FinglishApp-1.0-SNAPSHOT.jar
 
 ### JavaDoc
 
