@@ -34,8 +34,8 @@ public class GameService {
 
     public Question getTheNextQuestion() {
         int index = this.random.nextInt(9);
-        Question question = gameQuestions.get(index);
-        if (!usedQuestions.contains(index)) {
+        Question question = allQuestions.get(index);
+        if (!usedQuestions.contains(question)) {
             usedQuestions.add(question);
             question.shuffleOptions();
         } else {

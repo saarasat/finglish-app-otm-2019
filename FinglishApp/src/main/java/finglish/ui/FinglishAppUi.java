@@ -94,6 +94,7 @@ public class FinglishAppUi extends Application {
             if (loginView.getPassword().equals(password)) {
                 setting.setCenter(menu);
                 setting.setBottom(logOut);
+                loginInfo.setText("");
             }
         });
         
