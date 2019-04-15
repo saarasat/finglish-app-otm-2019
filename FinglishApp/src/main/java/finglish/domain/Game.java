@@ -18,8 +18,8 @@ public class Game {
     private int questionCounter;
     private int correctAnswers;
     
-    public Game(ArrayList<Question> gameQuestions) {
-        this.gameQuestions = gameQuestions;
+    public Game() {
+        this.gameQuestions = new ArrayList<>();
         this.answeredQuestions = new ArrayList<>();
         this.questionCounter = 0;
         this.correctAnswers = 0;
@@ -44,13 +44,14 @@ public class Game {
     public void setAnAnsweredQuestion(Question question) {
         answeredQuestions.add(question);
         questionCounter++;
+        System.out.println(questionCounter);
     }
     
-    public String getTotalScore() {
-        return this.correctAnswers + "/10 oikein";
+    public int getQuestionCounter() {
+        return questionCounter;
     }
-            
     
+
 
       
 }

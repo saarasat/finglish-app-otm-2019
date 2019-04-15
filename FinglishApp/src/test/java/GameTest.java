@@ -30,7 +30,7 @@ public class GameTest {
     public void setUp() {
         allQuestions = new ArrayList<>();
         allQuestions.add(new Question("question", "first option", "second option", "third option", "fourth option", "correct answer"));
-        this.game = new Game(allQuestions);
+        this.game = new Game();
     }
     
     @Test
@@ -46,11 +46,6 @@ public class GameTest {
         assertEquals(2, this.game.getAmountOfCorrectAnswers());
     }
     
-    @Test
-    public void totalScoreIsCorrect() {
-        this.game.setACorrectAnswer();
-        assertEquals("1/10 oikein", this.game.getTotalScore());
-                
-    }
+
     
 }
