@@ -28,7 +28,6 @@ public class CreateUserView {
 
         TextField usernameText = new TextField();
         TextField passwordText = new TextField();
-        Button createButton = new Button("Luo tunnus");
 
         setting.setAlignment(Pos.CENTER);
         setting.setVgap(10);
@@ -37,16 +36,9 @@ public class CreateUserView {
 
         setting.add(new Label("Käyttäjänimi:"), 0, 1);
         setting.add(new Label("Salasana:"), 0, 2);
-        setting.add(usernameText, 1, 0);
-        setting.add(passwordText, 1, 1);
-        setting.add(createButton, 1, 3);
+        setting.add(usernameText, 1, 1);
+        setting.add(passwordText, 1, 2);
 
-        createButton.setOnMouseClicked((event) -> {
-
-  
-            usernameText.clear();
-            passwordText.clear();
-        });
 
         return setting;
 

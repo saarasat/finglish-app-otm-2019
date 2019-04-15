@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package finglish.ui;
 
 import javafx.geometry.Insets;
@@ -21,10 +17,11 @@ public class GameView {
 
     private GameService gameService;
     private Question question;
-    
+
     private Label questionLabel;
     private Label answerCheck;
     private Label questionsAnswered;
+    private boolean answeredAlready;
     private RadioButton option1, option2, option3, option4;
     private Button next;
     private ToggleGroup toggleGroup;
@@ -48,90 +45,98 @@ public class GameView {
         option2 = new RadioButton();
         option3 = new RadioButton();
         option4 = new RadioButton();
-        
+
         option1.setText(question.getOption());
         option2.setText(question.getOption());
         option3.setText(question.getOption());
         option4.setText(question.getOption());
-        
+
         next = new Button("Seuraava");
 
-        
         setting.setAlignment(Pos.CENTER);
         setting.setVgap(10);
         setting.setHgap(10);
         setting.setPadding(new Insets(10, 10, 10, 10));
 
-        setting.add(questionsAnswered, 0,0);
+        setting.add(questionsAnswered, 0, 0);
         setting.add(answerCheck, 0, 1);
         setting.add(questionLabel, 0, 2);
         setting.add(option1, 0, 3);
         setting.add(option2, 0, 4);
         setting.add(option3, 0, 5);
         setting.add(option4, 0, 6);
-        setting.add(next, 0,10);
-        
+        setting.add(next, 0, 10);
+
         toggleGroup.getToggles().addAll(option1, option2, option3, option4);
 
-        next.setOnAction((eh) -> {
+        next.setOnAction((event) -> {
             RadioButton answerSelected = null;
-            
+
             if (toggleGroup.getSelectedToggle() != null) {
                 answerSelected = (RadioButton) toggleGroup.getSelectedToggle();
             }
-            
+
             question = gameService.getTheNextQuestion();
             toggleGroup.selectToggle(null);
             answerCheck.setText("");
-            showQuestion(question);    
-            
+            showQuestion(question);
         });
-        
-       
-        
+
         option1.setOnMouseClicked((event) -> {
-            if (question.checkIfCorrect(option1.getText())) {
-                answerCheck.setText("Yay, oikein!");
-                gameService.setACorrectAnswer(question);
-            } else {
-                answerCheck.setText("Sori, väärä vastaus");
-                gameService.setWrongAnswer(question);
+            if (!answeredAlready) {
+                if (question.checkIfCorrect(option1.getText())) {
+                    answerCheck.setText("Yay, oikein!");
+                    gameService.setACorrectAnswer(question);
+                } else {
+                    answerCheck.setText("Sori, väärä vastaus");
+                    gameService.setWrongAnswer(question);
+                }
+                answeredAlready = true;
             }
         });
 
         option2.setOnMouseClicked((event) -> {
-            if (question.checkIfCorrect(option2.getText())) {
-                answerCheck.setText("Yay, oikein!");
-                gameService.setACorrectAnswer(question);
-            } else {
-                answerCheck.setText("Sori, väärä vastaus");
-                gameService.setWrongAnswer(question);
+            if (!answeredAlready) {
+                if (question.checkIfCorrect(option2.getText())) {
+                    answerCheck.setText("Yay, oikein!");
+                    gameService.setACorrectAnswer(question);
+                } else {
+                    answerCheck.setText("Sori, väärä vastaus");
+                    gameService.setWrongAnswer(question);
+                }
+                answeredAlready = true;
             }
         });
 
         option3.setOnMouseClicked((event) -> {
-            if (question.checkIfCorrect(option3.getText())) {
-                answerCheck.setText("Yay, oikein!");
-                gameService.setACorrectAnswer(question);
-            } else {
-                answerCheck.setText("Sori, väärä vastaus");
-                gameService.setWrongAnswer(question);
+            if (!answeredAlready) {
+                if (question.checkIfCorrect(option3.getText())) {
+                    answerCheck.setText("Yay, oikein!");
+                    gameService.setACorrectAnswer(question);
+                } else {
+                    answerCheck.setText("Sori, väärä vastaus");
+                    gameService.setWrongAnswer(question);
+                }
+                answeredAlready = true;
             }
         });
 
         option4.setOnMouseClicked((event) -> {
-            if (question.checkIfCorrect(option4.getText())) {
-                answerCheck.setText("Yay, oikein!");
-                gameService.setACorrectAnswer(question);
-            } else {
-                answerCheck.setText("Sori, väärä vastaus");
-                gameService.setWrongAnswer(question);
+            if (!answeredAlready) {
+                if (question.checkIfCorrect(option4.getText())) {
+                    answerCheck.setText("Yay, oikein!");
+                    gameService.setACorrectAnswer(question);
+                } else {
+                    answerCheck.setText("Sori, väärä vastaus");
+                    gameService.setWrongAnswer(question);
+                }
+                answeredAlready = true;
             }
         });
 
         return setting;
     }
-    
+
     public void disableRadioButton() {
         option1.setVisible(false);
         option2.setVisible(false);
@@ -145,7 +150,7 @@ public class GameView {
         option3.setVisible(true);
         option4.setVisible(true);
     }
-    
+
     public void showQuestion(Question question) {
         if (question != null) {
             questionLabel.setText(question.getQuestion());
@@ -154,20 +159,17 @@ public class GameView {
             option3.setText(question.getOption());
             option4.setText(question.getOption());
             enableRadioButton();
+            answeredAlready = false;
             questionsAnswered.setText(this.gameService.getAmountOfAnswered());
 
         } else {
-            next.setText("End game");
+            next.setVisible(false);
             questionLabel.setText(this.gameService.getTotalScore());
             questionsAnswered.setText("");
             disableRadioButton();
-            
-            next.setOnMouseClicked((event) -> {
-               this.gameService.finishAGame();
-            });
-
         }
     }
     
+ 
 
 }

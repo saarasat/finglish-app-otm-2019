@@ -5,6 +5,11 @@
  */
 package finglish.ui;
 
+import finglish.dao.UserDao;
+import finglish.domain.GameService;
+import finglish.domain.User;
+import java.util.ArrayList;
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
@@ -13,16 +18,17 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 
-/**
- *
- * @author saarasat
- */
 public class LoginView {
     
     private TextField usernameText; 
     private TextField passwordText; 
+    private GameService gameService;
+    private UserDao userDao;
+    private ArrayList<User> users;
     
-    public LoginView() {
+    public LoginView(GameService gameService, UserDao userDao, ArrayList<User> users) {
+        this.gameService = gameService;
+        this.userDao = userDao;
        
     }
     
@@ -33,7 +39,8 @@ public class LoginView {
         Label usernameLabel = new Label("Käyttäjätunnus:");
         usernameText = new TextField(); 
         Label passwordLabel = new Label("Salasana:");
-        passwordText = new TextField();        
+        passwordText = new TextField(); 
+                
         
         
         setting.setAlignment(Pos.CENTER);
@@ -41,10 +48,11 @@ public class LoginView {
         setting.setHgap(10);
         setting.setPadding(new Insets(10,10,10,10));
         
-        setting.add(usernameLabel, 0, 0);
-        setting.add(usernameText, 0, 1);
-        setting.add(passwordLabel, 0, 2);
-        setting.add(passwordText, 0, 3);
+        setting.add(usernameLabel, 0, 2);
+        setting.add(usernameText, 0, 3);
+        setting.add(passwordLabel, 0, 4);
+        setting.add(passwordText, 0, 5);
+          
         
         return setting;
         
@@ -56,8 +64,6 @@ public class LoginView {
 
     public String getPassword() {
         return passwordText.getText();
-    }
-
-    
+    }    
     
 }

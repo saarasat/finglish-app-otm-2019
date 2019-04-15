@@ -45,10 +45,6 @@ public class GameService {
 
         index = this.random.nextInt(allQuestions.size() - 1);
 
-        if (this.usedIndexes.size() == 0 || this.game.getQuestionCounter() == 1) {
-            this.usedIndexes.add(index);
-        }
-
         if (usedIndexes.size() != 1) {
             while (this.usedIndexes.contains(index)) {
                 index = this.random.nextInt(allQuestions.size() - 1);
@@ -76,12 +72,13 @@ public class GameService {
     public void startANewGame() {
         this.game = new Game();
         this.usedIndexes = new ArrayList<>();
-
     }
 
     public void finishAGame() {
         this.usedIndexes.clear();
+        this.game = new Game();
     }
+    
 
     public String getTotalScore() {
         return this.game.getAmountOfCorrectAnswers() + "/10 oikein";
