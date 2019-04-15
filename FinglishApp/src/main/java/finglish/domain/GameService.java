@@ -63,7 +63,7 @@ public class GameService {
 
     }
 
-    public void setACorrectAnswer(Question question) {
+    public void setCorrectAnswer(Question question) {
         this.game.setAnAnsweredQuestion(question);
         this.game.setACorrectAnswer();
 
@@ -84,7 +84,7 @@ public class GameService {
         return this.game.getAmountOfCorrectAnswers() + "/10 oikein";
     }
     
-    public String getAmountOfAnswered() {
+    public String getTheQuestionNumber() {
         return (this.game.getQuestionCounter()+1) + "/10";
     }
 

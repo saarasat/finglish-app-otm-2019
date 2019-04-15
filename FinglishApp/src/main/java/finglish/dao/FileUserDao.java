@@ -7,14 +7,11 @@ package finglish.dao;
 
 import finglish.domain.User;
 import java.io.File;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-/**
- *
- * @author saarasat
- */
     
 public class FileUserDao implements UserDao {
     

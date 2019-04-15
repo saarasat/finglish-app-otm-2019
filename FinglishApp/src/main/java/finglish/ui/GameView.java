@@ -39,7 +39,7 @@ public class GameView {
         toggleGroup = new ToggleGroup();
 
         answerCheck = new Label("");
-        questionsAnswered = new Label(this.gameService.getAmountOfAnswered());
+        questionsAnswered = new Label(this.gameService.getTheQuestionNumber());
         questionLabel = new Label(question.getQuestion());
         option1 = new RadioButton();
         option2 = new RadioButton();
@@ -86,7 +86,7 @@ public class GameView {
             if (!answeredAlready) {
                 if (question.checkIfCorrect(option1.getText())) {
                     answerCheck.setText("Yay, oikein!");
-                    gameService.setACorrectAnswer(question);
+                    gameService.setCorrectAnswer(question);
                 } else {
                     answerCheck.setText("Sori, väärä vastaus");
                     gameService.setWrongAnswer(question);
@@ -99,7 +99,7 @@ public class GameView {
             if (!answeredAlready) {
                 if (question.checkIfCorrect(option2.getText())) {
                     answerCheck.setText("Yay, oikein!");
-                    gameService.setACorrectAnswer(question);
+                    gameService.setCorrectAnswer(question);
                 } else {
                     answerCheck.setText("Sori, väärä vastaus");
                     gameService.setWrongAnswer(question);
@@ -112,7 +112,7 @@ public class GameView {
             if (!answeredAlready) {
                 if (question.checkIfCorrect(option3.getText())) {
                     answerCheck.setText("Yay, oikein!");
-                    gameService.setACorrectAnswer(question);
+                    gameService.setCorrectAnswer(question);
                 } else {
                     answerCheck.setText("Sori, väärä vastaus");
                     gameService.setWrongAnswer(question);
@@ -125,7 +125,7 @@ public class GameView {
             if (!answeredAlready) {
                 if (question.checkIfCorrect(option4.getText())) {
                     answerCheck.setText("Yay, oikein!");
-                    gameService.setACorrectAnswer(question);
+                    gameService.setCorrectAnswer(question);
                 } else {
                     answerCheck.setText("Sori, väärä vastaus");
                     gameService.setWrongAnswer(question);
@@ -160,7 +160,7 @@ public class GameView {
             option4.setText(question.getOption());
             enableRadioButton();
             answeredAlready = false;
-            questionsAnswered.setText(this.gameService.getAmountOfAnswered());
+            questionsAnswered.setText(this.gameService.getTheQuestionNumber());
 
         } else {
             next.setVisible(false);

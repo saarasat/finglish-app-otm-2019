@@ -1,3 +1,5 @@
+package finglishapp.domain;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -5,6 +7,7 @@
  */
 
 import finglish.domain.Question;
+import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -89,7 +92,55 @@ public class QuestionTest {
         this.question.getOption();
         assertEquals("", this.question.getOption());
     }
+    
+    @Test
+    public void firstOptionIsReturnedAfterShuffling() {
+        this.question.shuffleOptions();
+        ArrayList<String> options = new ArrayList<>();
+        options.add(this.question.getOption());
+        options.add(this.question.getOption());
+        options.add(this.question.getOption());
+        options.add(this.question.getOption());
+        assertTrue(options.contains("first option"));    
+    }
 
+    @Test
+    public void secondOptionIsReturnedAfterShuffling() {
+        this.question.shuffleOptions();
+        ArrayList<String> options = new ArrayList<>();
+        options.add(this.question.getOption());
+        options.add(this.question.getOption());
+        options.add(this.question.getOption());
+        options.add(this.question.getOption());
+        assertTrue(options.contains("second option"));    
+    }
 
+    @Test
+    public void thirdOptionIsReturnedAfterShuffling() {
+        this.question.shuffleOptions();
+        ArrayList<String> options = new ArrayList<>();
+        options.add(this.question.getOption());
+        options.add(this.question.getOption());
+        options.add(this.question.getOption());
+        options.add(this.question.getOption());
+        assertTrue(options.contains("third option"));    
+    }
+
+    @Test
+    public void fourthOptionIsReturnedAfterShuffling() {
+        this.question.shuffleOptions();
+        ArrayList<String> options = new ArrayList<>();
+        options.add(this.question.getOption());
+        options.add(this.question.getOption());
+        options.add(this.question.getOption());
+        options.add(this.question.getOption());
+        assertTrue(options.contains("fourth option"));    
+    }
+    
+    @Test
+    public void methodToStringReturnsTheQuestion() {
+        assertEquals("question", question.toString());
+    }
+    
 
 }

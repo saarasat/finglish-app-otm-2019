@@ -44,7 +44,6 @@ public class FinglishAppUi extends Application {
         String userFile = "users.txt";
         this.questionDao = new FileQuestionDao(questionFile);
         this.userDao = new FileUserDao(userFile);
-        gameService = new GameService(questionDao);
     }
     
     @Override 
@@ -104,8 +103,9 @@ public class FinglishAppUi extends Application {
         VBox gameBox = new VBox();
         gameBox.setPadding(new Insets(20,20,20,20));
         gameBox.setSpacing(10);
-
-        GameView gameView = new GameView(gameService);
+        
+        gameService = new GameService(questionDao);
+        gameView = new GameView(gameService);
         Button endGame = new Button("Lopeta peli");
         gameBox.getChildren().addAll(gameView.getView(),endGame);
 
@@ -155,6 +155,7 @@ public class FinglishAppUi extends Application {
         });
         
         endGame.setOnAction((event) -> {
+            gameService.finishAGame();
             startScreen.setScene(menuScene);
         });
         
