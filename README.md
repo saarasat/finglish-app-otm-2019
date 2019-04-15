@@ -9,6 +9,8 @@ _A Finnish-English-gaming-app. App teaches people Finnish computer science -term
 
 [Requirements analysis](https://github.com/saarasat/finglish-app-otm-2019/blob/master/Documentation/Requirements%20analysis.md)
 
+[Software architecture](https://github.com/saarasat/finglish-app-otm-2019/blob/master/)
+
 ## Test credentials
 The app can be logged in with these test credentials:
 
