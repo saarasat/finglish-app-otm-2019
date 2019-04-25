@@ -39,9 +39,7 @@ public class LoginView {
         Label usernameLabel = new Label("Käyttäjätunnus:");
         usernameText = new TextField(); 
         Label passwordLabel = new Label("Salasana:");
-        passwordText = new TextField(); 
-                
-        
+        passwordText = new TextField();
         
         setting.setAlignment(Pos.CENTER);
         setting.setVgap(10);
@@ -53,7 +51,6 @@ public class LoginView {
         setting.add(passwordLabel, 0, 4);
         setting.add(passwordText, 0, 5);
           
-        
         return setting;
         
     }

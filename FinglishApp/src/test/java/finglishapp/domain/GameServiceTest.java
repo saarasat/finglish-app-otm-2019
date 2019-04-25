@@ -5,7 +5,9 @@
  */
 package finglishapp.domain;
 
+import finglish.dao.FileGameDao;
 import finglish.dao.FileQuestionDao;
+import finglish.dao.GameDao;
 import finglish.dao.QuestionDao;
 import finglish.domain.Game;
 import finglish.domain.GameService;
@@ -26,12 +28,16 @@ import static org.junit.Assert.*;
  */
 public class GameServiceTest {
     
+    int account_id;
     GameService gameService;
+    FakeGameDao gameDao;
     FakeQuestionDao questionDao;
     Question question;
     
     public GameServiceTest() throws Exception {
+        this.account_id = 1;
         this.questionDao = new FakeQuestionDao();
+        this.gameDao = new FakeGameDao();
         this.questionDao.create(new Question("question1", "first option1", "second option1", "third option1", "fourth option1", "correct answer1"));
         this.questionDao.create(new Question("question2", "first option2", "second option2", "third option2", "fourth option2", "correct answer2"));
         this.questionDao.create(new Question("question3", "first option3", "second option3", "third option3", "fourth option3", "correct answer3"));
@@ -40,7 +46,7 @@ public class GameServiceTest {
     
     @Before
     public void setUp() {
-        gameService = new GameService(questionDao);
+        gameService = new GameService(account_id, gameDao, questionDao);
         this.question = new Question("question1", "first option1", "second option1", "third option1", "fourth option1", "correct answer1");
     }
     

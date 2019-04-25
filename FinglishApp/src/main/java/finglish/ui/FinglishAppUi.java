@@ -5,19 +5,21 @@
  */
 package finglish.ui;
 
+import finglish.dao.FileGameDao;
 import finglish.dao.FileQuestionDao;
 import finglish.dao.QuestionDao;
 import finglish.dao.FileUserDao;
 import finglish.dao.UserDao;
 
-
-
-import java.util.List;
-import java.util.Properties;
 import finglish.domain.GameService;
 import finglish.domain.User;
+
 import java.io.FileInputStream;
+
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
+
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -33,6 +35,7 @@ import javafx.stage.Stage;
 public class FinglishAppUi extends Application {
     
     private GameService gameService;
+    private FileGameDao gameDao;
     private FileQuestionDao questionDao;
     private FileUserDao userDao;
     private ArrayList<User> users;
@@ -40,17 +43,23 @@ public class FinglishAppUi extends Application {
     
     @Override
     public void init() throws Exception {
-        String questionFile = "questions.txt";
-        String userFile = "users.txt";
+        Properties properties = new Properties();
+        
+        properties.load(new FileInputStream("config.properties"));
+        String questionFile = properties.getProperty("questionFile");
+        String userFile = properties.getProperty("userFile");
+        String gameFile = properties.getProperty("gameFile");
+        this.gameDao = new FileGameDao(gameFile);
         this.questionDao = new FileQuestionDao(questionFile);
         this.userDao = new FileUserDao(userFile);
+        this.gameService = new GameService(1, gameDao, questionDao, userDao);
+
     }
     
     @Override 
     public void start(Stage startScreen) throws Exception {    
              
-        this.users = userDao.getAll();
-                
+        
         // creating the scene for logging in
         BorderPane loginSetting = new BorderPane();
         LoginView loginView = new LoginView(gameService, userDao, users);
@@ -71,14 +80,14 @@ public class FinglishAppUi extends Application {
         
         //creating the scene for creating a new User
         BorderPane newUserSetting = new BorderPane();
-        CreateUserView createUserView = new CreateUserView();
+        CreateUserView createUserView = new CreateUserView(gameService);
         VBox userBox = new VBox();
         userBox.setPadding(new Insets(20,20,20,20));
         userBox.setSpacing(10);
         
-        Button createUserButton = new Button("Luo tunnus");
+        Button toLoginScene = new Button("Kirjaudu");
         
-        userBox.getChildren().addAll(createUserView.getView(), createUserButton);
+        userBox.getChildren().addAll(createUserView.getView(), toLoginScene);
         newUserSetting.setCenter(userBox);
         Scene newUserScene = new Scene(newUserSetting, 400,400);
         
@@ -104,7 +113,6 @@ public class FinglishAppUi extends Application {
         gameBox.setPadding(new Insets(20,20,20,20));
         gameBox.setSpacing(10);
         
-        gameService = new GameService(questionDao);
         gameView = new GameView(gameService);
         Button endGame = new Button("Lopeta peli");
         gameBox.getChildren().addAll(gameView.getView(),endGame);
@@ -167,6 +175,10 @@ public class FinglishAppUi extends Application {
            startScreen.setScene(loginScene);
         });
         
+        toLoginScene.setOnAction((event) -> {
+            startScreen.setScene(loginScene);
+        });
+        
         startScreen.setScene(loginScene);
         startScreen.show();
            
@@ -174,7 +186,7 @@ public class FinglishAppUi extends Application {
     
   
     public static void main(String[] args) {
-        launch(args);
+        launch(FinglishAppUi.class );
         System.out.println("terve");
     }
     

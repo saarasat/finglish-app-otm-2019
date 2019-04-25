@@ -12,7 +12,8 @@ import java.util.Random;
 
 public class Game {
     
-    private int id; 
+    private int id;
+    private int account_id;
     private List<Question> gameQuestions;
     private List<Question> answeredQuestions;
     private int questionCounter;
@@ -25,12 +26,29 @@ public class Game {
         this.correctAnswers = 0;
     }
     
-    public void setId(int id){
+    public Game(int account_id, int correctAnswers, int questionCounter) {
+        this.gameQuestions = gameQuestions;
+        this.answeredQuestions = answeredQuestions;
+        this.account_id = account_id;
+        this.questionCounter = questionCounter;
+        this.correctAnswers = correctAnswers;
+    }
+    
+    public void setId(int id) {
         this.id = id;
     }
     
+    public void setAccount_Id(int account_id) {
+        this.account_id = account_id;
+    }
+
+    
     public int getId() {
         return this.id;
+    }
+    
+    public int getAccountId() {
+        return this.account_id;
     }
     
     public int getAmountOfCorrectAnswers() {
@@ -50,8 +68,5 @@ public class Game {
     public int getQuestionCounter() {
         return questionCounter;
     }
-    
-
-
       
 }

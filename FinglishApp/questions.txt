@@ -2,18 +2,23 @@
 2;Mitä nimeä Internetissä lähetettävästä viestistä käytetään kuljetuskerroksella?;segmentti;kehys;paketti;sanoma;segmentti
 3;Mitä nimeä Internetissä lähetettävästä viestistä voidaan käyttää verkkokerroksella?;datagrammi;kehys;segmentti;sanoma;datagrammi
 4;Mitä nimeä Internetissä lähetettävästä viestistä käytetään linkkikerroksella?;kehys;datagrammi;sanoma;segmentti;kehys
-9;Mihin Internetin lyhenteeseen liittyy nimipalvelin?;DNS;ISP;HTTP;LAN;DNS
-10;Millä seuraavista komentorivin kyselyistä saat tietää IP-osoitteita?;nslookup;getIp;getNS;DNSlookup;nslookup
-11;Mikä seuraavista lyhenteistä liittyy videoiden siirtoon Internetissä?;DASH;POP3;ARPA;SMTP;DASH
-12;Mitä lyhennettä voidaan käyttää esimerkiksi operaattoreista, kuten DNA, Elisa tai Telia?;ISP;API;UTP;RSA;ISP
-14;Minkä Internetin kerroksen protokolla TCP on?;verkkokerroksen;linkkikerroksen;sovelluskerroksen;kuljetuskerroksen;kuljetuskerroksen
-15;Mikä on suomenkielinen nimitys tietoliikenteen termille transmission rate?;siirtonopeus;liikkumisnopeus;liikenopeus;kuljetusnopeus;siirtonopeus
-16;Mikä seuraavista on protokolla, joka varmistaa tietojen perille pääsyn?;TCP;UDP;ISP;TDM;TCP
-17;Mikä ei ole Internetin viivetyyppi?;prosessointiviive;siirtoviive;jonotusviive;monistusviive;monistusviive
-19;Mikä on englanninkielinen nimitys evästeelle?;cookie;add-on;application;addition;cookie
-20;Mikä seuraavista auttaa web-sivuja ylläpitämään tietoa käyttäjistä?;eväste;konsoli;DNS;SMTP;eväste
-21;Mikä on englanninkielinen termi verkkovälimuistille?;net cache;proxy server;internet cache;server cache;proxy server
-22;Mikä statuskoodi kertoo, että HTTP-pyyntö onnistui?;200;404;300;401;200
-23;Miltä selaimen konsolin välilehdeltä voi tarkastella mm. HTTP-pyyntöjen sujumista?;Sources;Memory;Performance;Network;Network
-24;Mikä seuraavista kerroksista ei kuulu perinteiseen Internetin kerrosten kuvaukseen?;sovelluskerros;fyysinen kerros;linkkikerros;esityskerros;esityskerros
-25;Montako kerrosta on OSI-mallissa?;4;6;8;7;7
+5;Mikä seuraavista kerroksista ei kuulu perinteiseen Internetin kerrosten kuvaukseen?;sovelluskerros;fyysinen kerros;linkkikerros;esityskerros;esityskerros
+6;Millä seuraavista komentorivin kyselyistä saat tietää IP-osoitteita?;nslookup;getIp;getNS;DNSlookup;nslookup
+7;Mikä seuraavista lyhenteistä liittyy videoiden siirtoon Internetissä?;DASH;POP3;ARPA;SMTP;DASH
+8;Mitä lyhennettä voidaan käyttää esimerkiksi operaattoreista, kuten DNA, Elisa tai Telia?;ISP;API;UTP;RSA;ISP
+9;Minkä Internetin kerroksen protokolla TCP on?;verkkokerroksen;linkkikerroksen;sovelluskerroksen;kuljetuskerroksen;verkkokerroksen
+10;Mikä on suomenkielinen nimitys tietoliikenteen termille transmission rate?;siirtonopeus;liikkumisnopeus;liikenopeus;kuljetusnopeus;siirtonopeus
+11;Mikä seuraavista on protokolla, joka varmistaa tietojen perille pääsyn?;TCP;UDP;ISP;TDM;TCP
+12;Mikä ei ole Internetin viivetyyppi?;prosessointiviive;siirtoviive;jonotusviive;monistusviive;monistusviive
+13;Mikä on englanninkielinen nimitys evästeelle?;cookie;add-on;application;addition;cookie
+14;Mikä seuraavista auttaa web-sivuja ylläpitämään tietoa käyttäjistä?;eväste;konsoli;DNS;SMTP;eväste
+15;Mikä on englanninkielinen termi verkkovälimuistille?;net cache;proxy server;internet cache;server cache;proxy server
+16;Miltä selaimen konsolin välilehdeltä voi tarkastella mm. HTTP-pyyntöjen sujumista?;Sources;Memory;Performance;Network;Network
+17;Mihin Internetin lyhenteeseen liittyy nimipalvelin?;DNS;ISP;HTTP;LAN;DNS
+18;Mistä tulee lyhenne LAN?;Local Area Network;Local Address Name;Link Address Name;Link Address Network;Local Area Network
+19;Mistä tulee lyhenne MAN?;Metropolitan Area Network;Multi Area Network;Multi Address Network;Massive Area Network;Metropolitan Area Network
+20;Mistä tulee lyhenne UDP?;User Datagram Protocol;Useless Data Protocol;User Data Protocol;Usable Data Protocol;User Datagram Protocol
+21;Mihin Internetin toimintoon käytetään DNS:aa?;IP-osoitteiden selvittämiseen;sähköpostin lähettämiseen palvelimelle;IP-paketin vastaanottamiseen;HTTP-pyyntöjen muodostamiseen;IP-osoitteiden selvittämiseen
+22;Mistä sanoista tulee lyhenne ISP?;Isolated Server Process;Internet Service Provider;Internet Server Provider;Internet Server Process;Internet Service Provider
+23;Millä kyselyllä haetaan mm. HTML-tiedostoja palvelimelta?;HTTP GET;HTTP POST;HTTP HEAD;HTML GET;HTTP GET
+24;Mikä on englanninkielinen termi verkkovälimuistille?;net cache;proxy server;internet cache;server cache;proxy server

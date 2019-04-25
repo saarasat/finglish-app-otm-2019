@@ -24,15 +24,18 @@ public class FileQuestionDao implements QuestionDao {
     public FileQuestionDao(String file) throws Exception {
         questions = new ArrayList<>();
         this.file = file;
-        
         try {
-            Scanner reader = new Scanner(new File("questions.txt"));
+            Scanner reader = new Scanner(new File(file));
             while (reader.hasNextLine()) {
                 String[] pieces = reader.nextLine().split(";");
-                Question q = new Question(pieces[1], pieces[2], pieces[3], pieces[4], pieces[5], pieces[6]);
+                int id = Integer.parseInt(pieces[0]);
+                Question q = new Question(id, pieces[1], pieces[2], pieces[3], pieces[4], pieces[5], pieces[6]);
                 questions.add(q);
+                q.setId(id);
             }
         } catch (Exception e) {
+            FileWriter writer = new FileWriter(new File(file));
+            writer.close();
             System.out.println("No file");
         }
     }
@@ -50,8 +53,24 @@ public class FileQuestionDao implements QuestionDao {
     public Question create(Question question) throws Exception {
         question.setId(generateId());
         questions.add(question);
-        
+        saveNewQuestion();
         return question;
     }
+    
+    private void saveNewQuestion() throws Exception{
+        try (FileWriter writer = new FileWriter(new File(file))) {
+            for (Question question : questions) {
+                writer.write(question.getId() + 
+                        ";" + question.getQuestion() 
+                        + ";" + question.getOption() 
+                        + ";" + question.getOption() 
+                        + ";" + question.getOption() 
+                        + ";" + question.getOption() 
+                        + ";" + question.getOption()
+                        + ";" + question.getCorrectAnswer() + "\n");
+                System.out.println(question.getQuestion());
+            }
+        }
+    }   
     
 }

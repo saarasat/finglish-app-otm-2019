@@ -12,8 +12,8 @@ public class Question {
     private int id;
     private int counter;
     
-    public Question(String question, String first, String second, String third, String fourth, String correctAnswer) {
-        this.id = 0;
+    public Question(int id, String question, String first, String second, String third, String fourth, String correctAnswer) {
+        this.id = id;
         this.question = question;
         this.answerOptions = new String[4];
         this.answerOptions[0] = first;
@@ -22,7 +22,16 @@ public class Question {
         this.answerOptions[3] = fourth;
         this.correctAnswer = correctAnswer;       
     }       
-    
+
+    public Question(String question, String first, String second, String third, String fourth, String correctAnswer) {
+        this.question = question;
+        this.answerOptions = new String[4];
+        this.answerOptions[0] = first;
+        this.answerOptions[1] = second;
+        this.answerOptions[2] = third;
+        this.answerOptions[3] = fourth;
+        this.correctAnswer = correctAnswer;       
+    }        
     
     public int getId() {
         return this.id;

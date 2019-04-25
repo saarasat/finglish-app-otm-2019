@@ -12,9 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-    
+ 
 public class FileUserDao implements UserDao {
-    
     private ArrayList<User> users;
     private String file;
     
@@ -23,20 +22,20 @@ public class FileUserDao implements UserDao {
         this.file = file;
         
         try {
-            Scanner reader = new Scanner(new File("users.txt"));
+            Scanner reader = new Scanner(new File(file));
             while (reader.hasNextLine()) {
                 String[] pieces = reader.nextLine().split(";");
-                User u = new User(pieces[2], pieces[3]);
-                u.setId(Integer.valueOf(pieces[1]));
+                int id = Integer.parseInt(pieces[0]);
+                User u = new User(pieces[1], pieces[2]);
                 users.add(u);
+                u.setId(id);
+                System.out.println(u.getUsername());
             }
         } catch (Exception e) {
-            System.out.println("No userfile");
+            FileWriter writer = new FileWriter(new File(file));
+            writer.close();
+            System.out.println("No file");
         }
-        User testi = new User("testaaja", "salasana");
-        User tokaTesti = new User("testaaja2", "salasana2");
-        users.add(testi);
-        users.add(tokaTesti);
     }
     
     private int generateId() {
@@ -62,8 +61,18 @@ public class FileUserDao implements UserDao {
     public User create(User user) throws Exception {
         user.setId(generateId());
         users.add(user);
-        
+        saveNewUser();
         return user;
+    }
+    
+    private void saveNewUser() throws Exception{
+        try (FileWriter writer = new FileWriter(new File(file))) {
+            for (User user : users) {
+                writer.write(user.getId() 
+                + ";" + user.getUsername()
+                + ";" + user.getPassword() + "\n");
+            }
+        }
     }
     
     
