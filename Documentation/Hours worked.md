@@ -11,4 +11,7 @@
 | 9.4.  | 6     | Initial architecture, added user-class and login-possibility |
 | 15.4. | 8     | Added more tests, functions for changing scenes, improved game-logic |
 | 16.4. | 3     | Solving problems with jar-files, sequence graph, improved ui |
-|<strong>Total</strong>|<strong>34</strong>|| 
+| 24.4. | 4     | Solving problems with java-versions and javafx |
+| 25.4. | 10    | Creating functionality for records for permanent keeping, more tests |
+| 26.4. | 4     | Javadocs, code review |
+|<strong>Total</strong>|<strong>52</strong>|| 
