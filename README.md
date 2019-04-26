@@ -41,6 +41,15 @@ You can generate an executable jar with the command:
 
 this generates an executable jar-file into the target-folder: target/FinglishApp-1.0-SNAPSHOT.jar
 
+### Javadoc
+
+You can check how the methods in this application work by creating a Javadoc:
+
+<pre><code>mvn javadoc:javadoc</code></pre>
+
+Check the report at the target-folder: target/site/apidocs/index.html
+
+
 ### Checkstyle
 
 Checks defined in checkstyle.xml can be run through with the command:
