@@ -111,8 +111,7 @@ public class Question {
         for (int i = 0; i< 4; i++) {
             index = randomizer(4);
             while (indexes.contains(index)) {
-                index = randomizer(4);
-                System.out.println(index);
+                index = randomizer(4);;
             }
             answerOptions[i] = options[index];
             indexes.add(index);

@@ -34,7 +34,6 @@ public class GameService {
     public GameService(int accountId, GameDao gameDao, QuestionDao questionDao, UserDao userDao) {
         this.accountId = accountId;
         this.gameDao = gameDao;
-        this.allGames = gameDao.getAll();
         this.questionDao = questionDao;
         this.allQuestions = questionDao.getAll();
         this.userDao = userDao;
@@ -52,14 +51,27 @@ public class GameService {
     * @return information on whether the user was successfully added
     */
     
-    public boolean addUser(String username, String password)  {
+    public boolean addUser(String username, String password, int adminStatus)  {
         System.out.println("täällä");
         if (userDao.findByUsername(username) != null) {
             return false;
         }
-        User user = new User(username, password);
+        User user = new User(username, password, adminStatus);
         try {
             userDao.create(user);
+        } catch(Exception e) {
+            return false;
+        }
+
+        return true;
+    }
+    
+    public boolean removeUser(int id)  {
+        if (userDao.findById(id) == null) {
+            return false;
+        }
+        try {
+            userDao.deleteUser(id);
         } catch(Exception e) {
             return false;
         }
@@ -93,7 +105,6 @@ public class GameService {
     */
  
     public void addQuestion(Question question) {
-        this.allQuestions.add(question);
         for (Question q : allQuestions) {
             System.out.println(q.getQuestion());
         }
@@ -123,11 +134,11 @@ public class GameService {
             this.usedIndexes.add(index);
         }
 
-        index = this.random.nextInt(allQuestions.size() - 1);
+        index = randomizer(allQuestions.size() - 1);
 
         if (usedIndexes.size() != 1) {
             while (this.usedIndexes.contains(index)) {
-                index = this.random.nextInt(allQuestions.size() - 1);
+                index = randomizer(allQuestions.size() - 1);
             }
         }
 
@@ -136,6 +147,11 @@ public class GameService {
         this.usedIndexes.add(index);
          
         return question;
+    }
+    
+    private int randomizer(int i) {
+        
+        return this.random.nextInt(i);
     }
 
     
@@ -224,18 +240,22 @@ public class GameService {
     }
     
     public String highScoreList() {
-        ArrayList<Integer> highScores = new ArrayList<>();
-        for (Game game : this.accountsGames) {
-            highScores.add(game.getAmountOfCorrectAnswers());
-        }
-        Collections.sort(highScores);
-        String list = "";
+        this.allGames = gameDao.getAll();
+        Collections.sort(allGames);
+        StringBuilder list = new StringBuilder();
         for (int i = 0; i < 10; i++) {
-            list.concat((i+1) + ". " + highScores.get(i) + "/10");
-        }
-        
-        return "Tämä";
+            String username = getUsernameForAGame(allGames.get(i));
+            list.append((i+1) + ". " + getUsernameForAGame(allGames.get(i)) + "  " + allGames.get(i).getAmountOfCorrectAnswers() + "/10" + "\n");
+        } 
+        return list.toString();
     }
+    
+    public String getUsernameForAGame(Game game) {
+        int idOfThePlayer = game.getAccountId();
+        return userDao.findById(idOfThePlayer);
+    }
+    
+
 
 
 }

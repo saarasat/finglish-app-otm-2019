@@ -6,7 +6,7 @@
 6;Millä seuraavista komentorivin kyselyistä saat tietää IP-osoitteita?;nslookup;getIp;getNS;DNSlookup;nslookup
 7;Mikä seuraavista lyhenteistä liittyy videoiden siirtoon Internetissä?;DASH;POP3;ARPA;SMTP;DASH
 8;Mitä lyhennettä voidaan käyttää esimerkiksi operaattoreista, kuten DNA, Elisa tai Telia?;ISP;API;UTP;RSA;ISP
-9;Minkä Internetin kerroksen protokolla TCP on?;verkkokerroksen;linkkikerroksen;sovelluskerroksen;kuljetuskerroksen;verkkokerroksen
+9;Minkä Internetin kerroksen protokolla TCP on?;verkkokerroksen;linkkikerroksen;sovelluskerroksen;kuljetuskerroksen;kuljetuskerroksen
 10;Mikä on suomenkielinen nimitys tietoliikenteen termille transmission rate?;siirtonopeus;liikkumisnopeus;liikenopeus;kuljetusnopeus;siirtonopeus
 11;Mikä seuraavista on protokolla, joka varmistaa tietojen perille pääsyn?;TCP;UDP;ISP;TDM;TCP
 12;Mikä ei ole Internetin viivetyyppi?;prosessointiviive;siirtoviive;jonotusviive;monistusviive;monistusviive
@@ -27,3 +27,5 @@
 27;Mitä virheitä EI esiinny datan välittämisessä Internetissä?;bittivirheitä;pakettien katoamista;paketteja epäjärjestystä;kuljetusvirheitä;kuljetusvirheitä
 28;Mitä seuraavista EI käytetä datan tarkistamiseen Internetin lähetyksissä?;tarkistussummaa;pakettinumeroita;kuittausviestejä;yhteysvarmistusta;yhteysvarmistusta
 29;Mitä tarkoittaa Internetin datanlähetyksessä käytetty ACK?;saapumiskuittausta;yhteysvirhettä;datapyyntöä;otsaketietoa;saapumiskuittausta
+30;Mihin kerrokseen ensisijaisesti liittyy IP-osoitteet?;Kuljetuskerrokseen;Verkkokerrokseen;Linkkikerrokseen;Fyysiseen kerrokseen;Verkkokerrokseen
+31;Minkä protokollan avulla saadaan koneelle IP-osoite?;DHCP;HTTP;UDP;LAN;DHCP

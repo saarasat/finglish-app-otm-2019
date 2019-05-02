@@ -22,7 +22,7 @@ public class FileUserDao implements UserDao {
             while (reader.hasNextLine()) {
                 String[] pieces = reader.nextLine().split(";");
                 int id = Integer.parseInt(pieces[0]);
-                User u = new User(pieces[1], pieces[2]);
+                User u = new User(pieces[1], pieces[2], Integer.valueOf(pieces[3]));
                 users.add(u);
                 u.setId(id);
                 System.out.println(u.getUsername());
@@ -41,7 +41,8 @@ public class FileUserDao implements UserDao {
     */
     
     private int generateId() {
-        return users.size() + 1;
+        int lastId = users.get(users.size() - 1).getId();
+        return lastId + 1;
     }
     
     /**
@@ -59,6 +60,21 @@ public class FileUserDao implements UserDao {
         }
         return null;
     }
+    
+    @Override
+    public String findById(int id) {
+        for (User user : users) {
+            if (user.getId() == id) {
+                return user.getUsername();
+            }
+        }
+        return null;
+    }
+    
+ 
+
+
+    
     
     /**
     * Gets all the users stored.
@@ -100,9 +116,20 @@ public class FileUserDao implements UserDao {
             for (User user : users) {
                 writer.write(user.getId() 
                     + ";" + user.getUsername() 
-                    + ";" + user.getPassword() + "\n");
+                    + ";" + user.getPassword() 
+                    + ";" + user.getAdmin() + "\n");
             }
         }
+    }
+    
+    @Override
+    public void deleteUser(int id) throws Exception {
+        for (User user : users) {
+            if (user.getId() == id) {
+                users.remove(user);
+            }
+        }
+        saveNewUser();
     }
     
     

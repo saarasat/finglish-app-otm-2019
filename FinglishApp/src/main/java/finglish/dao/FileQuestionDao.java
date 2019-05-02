@@ -74,13 +74,12 @@ public class FileQuestionDao implements QuestionDao {
     private void saveNewQuestion() throws Exception {
         try (FileWriter writer = new FileWriter(new File(file))) {
             for (Question question : questions) {
-                writer.write(question.getId() + 
-                        ";" + question.getQuestion() 
+                writer.write(question.getId() 
+                        + ";" + question.getQuestion() 
                         + ";" + question.getOption() 
                         + ";" + question.getOption() 
                         + ";" + question.getOption() 
                         + ";" + question.getOption() 
-                        + ";" + question.getOption()
                         + ";" + question.getCorrectAnswer() + "\n");
                 System.out.println(question.getQuestion());
             }

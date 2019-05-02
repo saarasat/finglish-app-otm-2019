@@ -11,7 +11,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
-public class Game {
+public class Game implements Comparable<Game>{
     
     private int id;
     private int accountId;
@@ -66,6 +66,11 @@ public class Game {
     
     public int getQuestionCounter() {
         return questionCounter;
+    }
+    
+    @Override
+    public int compareTo(Game other) {
+        return other.getAmountOfCorrectAnswers() - this.getAmountOfCorrectAnswers();
     }
       
 }

@@ -17,6 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
 
 
 public class HighScoreView {
@@ -37,8 +38,9 @@ public class HighScoreView {
         setting.setHgap(10);
         setting.setPadding(new Insets(10,10,10,10));
 
-       
+        Text highscores = new Text(this.gameService.highScoreList());
         setting.add(new Label("Highscores"), 0, 0);
+        setting.add(new Label(highscores.getText()), 0, 1);
 
         return setting;
     }

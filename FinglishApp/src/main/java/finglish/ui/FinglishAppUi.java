@@ -40,6 +40,7 @@ public class FinglishAppUi extends Application {
     private FileQuestionDao questionDao;
     private FileUserDao userDao;
     private ArrayList<User> users;
+    private User user;
     private GameView gameView;
 
     
@@ -55,6 +56,8 @@ public class FinglishAppUi extends Application {
         this.questionDao = new FileQuestionDao(questionFile);
         this.userDao = new FileUserDao(userFile);
         this.gameService = new GameService(1, gameDao, questionDao, userDao);
+        this.user = null;
+        this.users = userDao.getAll();
         
     }
     
@@ -72,9 +75,9 @@ public class FinglishAppUi extends Application {
         Button loginButton = new Button("Kirjaudu");
         Label loginInfo = new Label("");
         Label newUserLabel = new Label("Ei vielä tunnusta?");
-        Button newUser = new Button("Luo uusi tunnus");
+        Button newUserButton = new Button("Luo uusi tunnus");
 
-        loginBox.getChildren().addAll(loginInfo, loginView.getView(), loginButton, newUserLabel, newUser);
+        loginBox.getChildren().addAll(loginInfo, loginView.getView(), loginButton, newUserLabel, newUserButton);
         
         loginSetting.add(loginBox, 0, 1);
         Scene loginScene = new Scene(loginSetting, 400, 400);
@@ -83,14 +86,10 @@ public class FinglishAppUi extends Application {
         //creating the scene for creating a new User
         BorderPane newUserSetting = new BorderPane();
         CreateUserView createUserView = new CreateUserView(gameService);
-        VBox userBox = new VBox();
-        userBox.setPadding(new Insets(20,20,20,20));
-        userBox.setSpacing(10);
-        
-        Button toLoginScene = new Button("Kirjaudu");
-        
-        userBox.getChildren().addAll(createUserView.getView(), toLoginScene);
-        newUserSetting.setCenter(userBox);
+        VBox newUserBox = new VBox();
+        newUserBox.setPadding(new Insets(20,20,20,20));
+        newUserBox.setSpacing(10);
+        Button backFromCreatingUserButton = new Button("Kirjaudu");
         Scene newUserScene = new Scene(newUserSetting, 400,400);
         
         //creating the scene for main menu
@@ -103,8 +102,9 @@ public class FinglishAppUi extends Application {
         Button playAGameButton = new Button("Pelaa");
         Button addAQuestionButton = new Button("Lisää kysymys");
         Button highScoreButton = new Button("Top 10");
-        Button logOut = new Button("Kirjaudu ulos");         
-        menuBox.getChildren().addAll(welcomeLabel, playAGameButton, addAQuestionButton, highScoreButton, logOut);
+        Button adminButton = new Button("Hallitse käyttäjätilejä");
+        Button logOutButton = new Button("Kirjaudu ulos");         
+        menuBox.getChildren().addAll(welcomeLabel, playAGameButton, addAQuestionButton, highScoreButton, adminButton, logOutButton);
         
         menuSetting.setCenter(menuBox);
         Scene menuScene = new Scene(menuSetting, 400,400);
@@ -117,24 +117,19 @@ public class FinglishAppUi extends Application {
         gameBox.setSpacing(10);
         
         gameView = new GameView(gameService);
-        Button endGame = new Button("Lopeta peli");
-        
- 
+        Button endGameButton = new Button("Lopeta peli");
         Scene gameScene = new Scene(gameSetting, 700, 400);
 
         
         //creating the scene for adding questions
-        GridPane addQuestionSetting = new GridPane();
+        GridPane additionSetting = new GridPane();
         VBox additionBox = new VBox();
         additionBox.setPadding(new Insets(20,20,20,20));
         additionBox.setSpacing(10);
         
         AddQuestionsView addQuestionsView = new AddQuestionsView(gameService);
-        Button backToMenu = new Button("Takaisin valikkoon");
-        additionBox.getChildren().addAll(addQuestionsView.getView(), backToMenu);
-        
-        addQuestionSetting.add(additionBox, 0, 1);
-        Scene additionScene = new Scene(addQuestionSetting,700,400);
+        Button backFromAddingButton = new Button("Takaisin valikkoon");
+        Scene additionScene = new Scene(additionSetting,700,400);
        
 
         //creating the scene for highscores
@@ -144,18 +139,28 @@ public class FinglishAppUi extends Application {
         highScoreBox.setSpacing(10);
         
         HighScoreView highScoreView = new HighScoreView(gameService);
-        Button backToMainMenu = new Button("Takaisin valikkoon");
-        highScoreBox.getChildren().addAll(highScoreView.getView(), backToMainMenu);
+        Button backToMainMenuButton = new Button("Takaisin valikkoon");
+        highScoreBox.getChildren().addAll(highScoreView.getView(), backToMainMenuButton);
         
         highScoreSetting.add(highScoreBox, 0, 1);
         Scene highScoreScene = new Scene(highScoreSetting,700,400);
-
         
+        //creating the scene for admins
+        GridPane adminSetting = new GridPane();
+        VBox adminBox = new VBox();
+        adminBox.setPadding(new Insets(20,20,20,20));
+        adminBox.setSpacing(10);
+        
+        
+        Button backFromAdminButton = new Button("Takaisin valikkoon");
+        
+        Scene adminScene = new Scene(adminSetting,700,400);
+        
+
         // alternating between scenes
         loginButton.setOnMouseClicked((event) -> {
             String username = loginView.getUsername();
-            System.out.println(username);
-            User user = userDao.findByUsername(loginView.getUsername());
+            user = userDao.findByUsername(loginView.getUsername());
             if (user == null) {
                 loginInfo.setText("Käyttäjätunnusta ei löydy");
             }
@@ -166,18 +171,22 @@ public class FinglishAppUi extends Application {
             }
         });
         
-        newUser.setOnAction((event) -> {
+        newUserButton.setOnAction((event) -> {
+            newUserBox.getChildren().addAll(createUserView.getView(), backFromCreatingUserButton);
+            newUserSetting.setCenter(newUserBox);
             startScreen.setScene(newUserScene);
         });
         
         playAGameButton.setOnAction((event) -> {
             gameBox.getChildren().addAll(gameView.getView());
             gameSetting.add(gameBox, 0, 1);
-            gameSetting.add(endGame, 0, 2);
+            gameSetting.add(endGameButton, 0, 2);
             startScreen.setScene(gameScene);
         });
         
         addAQuestionButton.setOnAction((event) -> {
+            additionBox.getChildren().addAll(addQuestionsView.getView(), backFromAddingButton);    
+            additionSetting.add(additionBox, 0, 1);
             startScreen.setScene(additionScene);
         });
         
@@ -185,22 +194,44 @@ public class FinglishAppUi extends Application {
             startScreen.setScene(highScoreScene);
         });
         
-        endGame.setOnAction((event) -> {
+        
+        adminButton.setOnAction((event) -> {
+            AdminView adminView = new AdminView(gameService, userDao, users, user);
+            adminBox.getChildren().addAll(adminView.getView(), backFromAdminButton);
+            adminSetting.add(adminBox, 0, 1);       
+            startScreen.setScene(adminScene);
+        });
+        
+        
+        endGameButton.setOnAction((event) -> {
             gameService.finishAGame();
             gameBox.getChildren().clear();
             gameSetting.getChildren().clear();
             startScreen.setScene(menuScene);
         });
         
-        backToMenu.setOnAction((event) -> {
+        backFromAddingButton.setOnAction((event) -> {
+           additionBox.getChildren().clear();
+           additionSetting.getChildren().clear();
+           startScreen.setScene(menuScene); 
+        });
+        
+        backFromAdminButton.setOnAction((event) -> {
+           adminBox.getChildren().clear();
+           adminSetting.getChildren().clear();
+           if (userDao.getAll().isEmpty()) {
+               startScreen.setScene(loginScene);
+           }
            startScreen.setScene(menuScene); 
         });
     
-        logOut.setOnAction((event) -> {
+        logOutButton.setOnAction((event) -> {
            startScreen.setScene(loginScene);
         });
         
-        toLoginScene.setOnAction((event) -> {
+        backFromCreatingUserButton.setOnAction((event) -> {
+            newUserBox.getChildren().clear();
+            newUserSetting.getChildren().clear();
             startScreen.setScene(loginScene);
         });
         
@@ -209,12 +240,6 @@ public class FinglishAppUi extends Application {
            
     }
     
-    public void resetScene() {
-        
-        
-    }
-    
-  
     public static void main(String[] args) {
         launch(FinglishAppUi.class );
         System.out.println("terve");
