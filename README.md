@@ -11,7 +11,7 @@ _A Finnish-English-gaming-app. App teaches people Finnish computer science -term
 
 [Software architecture](https://github.com/saarasat/finglish-app-otm-2019/blob/master/Documentation/Architecture.md)
 
-[First release](https://github.com/saarasat/finglish-app-otm-2019/releases)
+[First and second releases](https://github.com/saarasat/finglish-app-otm-2019/releases)
 
 ## Test credentials
 The app can be logged in with these test credentials:
@@ -40,6 +40,15 @@ You can generate an executable jar with the command:
 <pre><code>mvn package</code></pre>
 
 this generates an executable jar-file into the target-folder: target/FinglishApp-1.0-SNAPSHOT.jar
+
+### Javadoc
+
+You can check how the methods in this application work by creating a Javadoc:
+
+<pre><code>mvn javadoc:javadoc</code></pre>
+
+Check the report at the target-folder: target/site/apidocs/index.html
+
 
 ### Checkstyle
 
