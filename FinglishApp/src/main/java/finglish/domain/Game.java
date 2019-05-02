@@ -7,29 +7,28 @@ package finglish.domain;
 
 import finglish.domain.Question;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
 public class Game {
     
     private int id;
-    private int account_id;
-    private List<Question> gameQuestions;
-    private List<Question> answeredQuestions;
+    private int accountId;
     private int questionCounter;
     private int correctAnswers;
+    private int wrongAnswers;
+    private Date date;
     
     public Game() {
-        this.gameQuestions = new ArrayList<>();
-        this.answeredQuestions = new ArrayList<>();
         this.questionCounter = 0;
         this.correctAnswers = 0;
+        this.wrongAnswers = 0;
+        this.date = new Date();
     }
     
-    public Game(int account_id, int correctAnswers, int questionCounter) {
-        this.gameQuestions = gameQuestions;
-        this.answeredQuestions = answeredQuestions;
-        this.account_id = account_id;
+    public Game(int accountId, int correctAnswers, int questionCounter) {
+        this.accountId = accountId;
         this.questionCounter = questionCounter;
         this.correctAnswers = correctAnswers;
     }
@@ -38,31 +37,31 @@ public class Game {
         this.id = id;
     }
     
-    public void setAccount_Id(int account_id) {
-        this.account_id = account_id;
+    public void setAccountId(int accountId) {
+        this.accountId = accountId;
     }
-
     
     public int getId() {
         return this.id;
     }
     
     public int getAccountId() {
-        return this.account_id;
+        return this.accountId;
     }
     
     public int getAmountOfCorrectAnswers() {
+        System.out.println(date);
         return correctAnswers;
     }
     
     public void setACorrectAnswer() {
         this.correctAnswers++;
+        this.questionCounter++;
     }
     
-    public void setAnAnsweredQuestion(Question question) {
-        answeredQuestions.add(question);
-        questionCounter++;
-        System.out.println(questionCounter);
+    public void setAWrongAnswer() {
+        this.wrongAnswers++;
+        this.questionCounter++;
     }
     
     public int getQuestionCounter() {

@@ -22,3 +22,8 @@
 22;Mistä sanoista tulee lyhenne ISP?;Isolated Server Process;Internet Service Provider;Internet Server Provider;Internet Server Process;Internet Service Provider
 23;Millä kyselyllä haetaan mm. HTML-tiedostoja palvelimelta?;HTTP GET;HTTP POST;HTTP HEAD;HTML GET;HTTP GET
 24;Mikä on englanninkielinen termi verkkovälimuistille?;net cache;proxy server;internet cache;server cache;proxy server
+25;Mikä seuraavista on Internetin kuljetusprotokolla?;ISP;TRP;TCP;LAN;TCP
+26;Mistä tunnistetaan yksittäinen tietokone?;MAC-osoitteesta;IP-osoitteesta;porttinumerosta;SMTP-osoitteesta;IP-osoitteesta
+27;Mitä virheitä EI esiinny datan välittämisessä Internetissä?;bittivirheitä;pakettien katoamista;paketteja epäjärjestystä;kuljetusvirheitä;kuljetusvirheitä
+28;Mitä seuraavista EI käytetä datan tarkistamiseen Internetin lähetyksissä?;tarkistussummaa;pakettinumeroita;kuittausviestejä;yhteysvarmistusta;yhteysvarmistusta
+29;Mitä tarkoittaa Internetin datanlähetyksessä käytetty ACK?;saapumiskuittausta;yhteysvirhettä;datapyyntöä;otsaketietoa;saapumiskuittausta

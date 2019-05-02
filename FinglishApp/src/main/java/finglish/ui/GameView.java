@@ -86,10 +86,10 @@ public class GameView {
             if (!answeredAlready) {
                 if (question.checkIfCorrect(option1.getText())) {
                     answerCheck.setText("Yay, oikein!");
-                    gameService.setCorrectAnswer(question);
+                    gameService.answerTheQuestion(true);
                 } else {
                     answerCheck.setText("Sori, väärä vastaus");
-                    gameService.setWrongAnswer(question);
+                    gameService.answerTheQuestion(false);
                 }
                 answeredAlready = true;
             }
@@ -99,10 +99,10 @@ public class GameView {
             if (!answeredAlready) {
                 if (question.checkIfCorrect(option2.getText())) {
                     answerCheck.setText("Yay, oikein!");
-                    gameService.setCorrectAnswer(question);
+                    gameService.answerTheQuestion(true);
                 } else {
                     answerCheck.setText("Sori, väärä vastaus");
-                    gameService.setWrongAnswer(question);
+                    gameService.answerTheQuestion(false);
                 }
                 answeredAlready = true;
             }
@@ -112,10 +112,10 @@ public class GameView {
             if (!answeredAlready) {
                 if (question.checkIfCorrect(option3.getText())) {
                     answerCheck.setText("Yay, oikein!");
-                    gameService.setCorrectAnswer(question);
+                    gameService.answerTheQuestion(true);
                 } else {
                     answerCheck.setText("Sori, väärä vastaus");
-                    gameService.setWrongAnswer(question);
+                    gameService.answerTheQuestion(false);
                 }
                 answeredAlready = true;
             }
@@ -125,10 +125,10 @@ public class GameView {
             if (!answeredAlready) {
                 if (question.checkIfCorrect(option4.getText())) {
                     answerCheck.setText("Yay, oikein!");
-                    gameService.setCorrectAnswer(question);
+                    gameService.answerTheQuestion(true);
                 } else {
                     answerCheck.setText("Sori, väärä vastaus");
-                    gameService.setWrongAnswer(question);
+                    gameService.answerTheQuestion(false);
                 }
                 answeredAlready = true;
             }

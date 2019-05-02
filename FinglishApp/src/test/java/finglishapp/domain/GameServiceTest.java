@@ -7,11 +7,14 @@ package finglishapp.domain;
 
 import finglish.dao.FileGameDao;
 import finglish.dao.FileQuestionDao;
+import finglish.dao.FileUserDao;
 import finglish.dao.GameDao;
 import finglish.dao.QuestionDao;
+import finglish.dao.UserDao;
 import finglish.domain.Game;
 import finglish.domain.GameService;
 import finglish.domain.Question;
+import finglish.domain.User;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Random;
@@ -32,12 +35,14 @@ public class GameServiceTest {
     GameService gameService;
     FakeGameDao gameDao;
     FakeQuestionDao questionDao;
+    FakeUserDao userDao;
     Question question;
     
     public GameServiceTest() throws Exception {
         this.account_id = 1;
         this.questionDao = new FakeQuestionDao();
         this.gameDao = new FakeGameDao();
+        this.userDao = new FakeUserDao();
         this.questionDao.create(new Question("question1", "first option1", "second option1", "third option1", "fourth option1", "correct answer1"));
         this.questionDao.create(new Question("question2", "first option2", "second option2", "third option2", "fourth option2", "correct answer2"));
         this.questionDao.create(new Question("question3", "first option3", "second option3", "third option3", "fourth option3", "correct answer3"));
@@ -46,7 +51,7 @@ public class GameServiceTest {
     
     @Before
     public void setUp() {
-        gameService = new GameService(account_id, gameDao, questionDao);
+        gameService = new GameService(account_id, gameDao, questionDao, userDao);
         this.question = new Question("question1", "first option1", "second option1", "third option1", "fourth option1", "correct answer1");
     }
     
@@ -63,7 +68,7 @@ public class GameServiceTest {
     public void ifTenQuestionsAreAnsweredWrongScoreIsZero() {
         this.gameService.startANewGame();
         for (int i = 0; i < 10; i++) {
-            this.gameService.setWrongAnswer(question);
+            this.gameService.answerTheQuestion(false);
         }
         assertEquals("0/10 oikein", this.gameService.getTotalScore());
     }
@@ -72,7 +77,7 @@ public class GameServiceTest {
     public void ifTenQuestionsAreAnsweredCorrectlyScoreIsTen() {
         this.gameService.startANewGame();
         for (int i = 0; i < 10; i++) {
-            this.gameService.setCorrectAnswer(question);
+            this.gameService.answerTheQuestion(true);
         }
         assertEquals("10/10 oikein", this.gameService.getTotalScore());
     
@@ -82,7 +87,7 @@ public class GameServiceTest {
     public void getQuestionNumberReturnsTheAmountCorrectlyAfterFiveQuestions() {
         this.gameService.startANewGame();
         for (int i = 0; i < 5; i++) {
-            this.gameService.setCorrectAnswer(question);        
+            this.gameService.answerTheQuestion(true);        
         }
         assertEquals("6/10", this.gameService.getTheQuestionNumber());
     }

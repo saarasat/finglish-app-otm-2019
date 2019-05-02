@@ -60,11 +60,28 @@ public class Question {
     public void setQuestion(String question) {
         this.question = question;
     }
+    
+    
+    /**
+    * Checks if the answer user has clicked on is correct.
+    *
+    * @param answered the String-form answer option on the button the user has chosen.
+    * 
+    * @return boolean-information on whether the chosen answer matched the correct answer for this question.
+    */
             
     public boolean checkIfCorrect(String answered) {
         return answered.equals(this.correctAnswer);
     }
     
+    /**
+    * Gets all four options for a question.
+    *
+    * Uses a counter to return all the four options for this question out of the option-array.
+    * 
+    * @return A answer option as a String. Or an empty String if no options are left.
+    */
+         
     public String getOption() {   
         if (counter < 4) {
             counter++;
@@ -73,16 +90,38 @@ public class Question {
         return "";
     }
     
+    
+    /**
+    * Shifts the order of the answer options.
+    *
+    * Randomizes the order of the option-array, so that the users would encounter the same options in different order.
+    * 
+    */
+    
     public void shuffleOptions() {
+        this.counter = 0;
+        String[] options = new String[4];
+        ArrayList<Integer> indexes = new ArrayList<>();
         int index;
-        String handled;
-        Random random = new Random();
-        for (int i = 3; i > 0; i--) {
-            index = random.nextInt(i + 1);
-            handled = answerOptions[index];
-            answerOptions[index] = answerOptions[i];
-            answerOptions[i] = handled;
+        
+        for (int i = 0; i < 4; i++) {
+            options[i] = answerOptions[i];
         }
+        
+        for (int i = 0; i< 4; i++) {
+            index = randomizer(4);
+            while (indexes.contains(index)) {
+                index = randomizer(4);
+                System.out.println(index);
+            }
+            answerOptions[i] = options[index];
+            indexes.add(index);
+        }
+    }
+    
+    private int randomizer(int i) {
+        Random random = new Random();
+        return random.nextInt(i);
     }
     
     @Override

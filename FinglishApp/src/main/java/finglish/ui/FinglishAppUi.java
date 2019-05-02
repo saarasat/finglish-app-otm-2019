@@ -27,6 +27,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -40,6 +41,7 @@ public class FinglishAppUi extends Application {
     private FileUserDao userDao;
     private ArrayList<User> users;
     private GameView gameView;
+
     
     @Override
     public void init() throws Exception {
@@ -53,7 +55,7 @@ public class FinglishAppUi extends Application {
         this.questionDao = new FileQuestionDao(questionFile);
         this.userDao = new FileUserDao(userFile);
         this.gameService = new GameService(1, gameDao, questionDao, userDao);
-
+        
     }
     
     @Override 
@@ -61,7 +63,7 @@ public class FinglishAppUi extends Application {
              
         
         // creating the scene for logging in
-        BorderPane loginSetting = new BorderPane();
+        GridPane loginSetting = new GridPane();
         LoginView loginView = new LoginView(gameService, userDao, users);
         VBox loginBox = new VBox();
         loginBox.setPadding(new Insets(20,20,20,20));
@@ -74,7 +76,7 @@ public class FinglishAppUi extends Application {
 
         loginBox.getChildren().addAll(loginInfo, loginView.getView(), loginButton, newUserLabel, newUser);
         
-        loginSetting.setCenter(loginBox);
+        loginSetting.add(loginBox, 0, 1);
         Scene loginScene = new Scene(loginSetting, 400, 400);
                  
         
@@ -98,31 +100,31 @@ public class FinglishAppUi extends Application {
         menuBox.setSpacing(10);
         
         Label welcomeLabel = new Label("Tervetuloa pelaamaan Finglishia!");
-        Button playAGame = new Button("Pelaa");
-        Button addAQuestion = new Button("Lisää kysymys");
+        Button playAGameButton = new Button("Pelaa");
+        Button addAQuestionButton = new Button("Lisää kysymys");
+        Button highScoreButton = new Button("Top 10");
         Button logOut = new Button("Kirjaudu ulos");         
-        menuBox.getChildren().addAll(welcomeLabel, playAGame, addAQuestion, logOut);
+        menuBox.getChildren().addAll(welcomeLabel, playAGameButton, addAQuestionButton, highScoreButton, logOut);
         
         menuSetting.setCenter(menuBox);
         Scene menuScene = new Scene(menuSetting, 400,400);
      
         
         //creating the scene for playing
-        BorderPane gameSetting = new BorderPane();
+        GridPane gameSetting = new GridPane();
         VBox gameBox = new VBox();
         gameBox.setPadding(new Insets(20,20,20,20));
         gameBox.setSpacing(10);
         
         gameView = new GameView(gameService);
         Button endGame = new Button("Lopeta peli");
-        gameBox.getChildren().addAll(gameView.getView(),endGame);
-
-        gameSetting.setCenter(gameBox);
+        
+ 
         Scene gameScene = new Scene(gameSetting, 700, 400);
 
         
         //creating the scene for adding questions
-        BorderPane addQuestionSetting = new BorderPane();
+        GridPane addQuestionSetting = new GridPane();
         VBox additionBox = new VBox();
         additionBox.setPadding(new Insets(20,20,20,20));
         additionBox.setSpacing(10);
@@ -131,9 +133,23 @@ public class FinglishAppUi extends Application {
         Button backToMenu = new Button("Takaisin valikkoon");
         additionBox.getChildren().addAll(addQuestionsView.getView(), backToMenu);
         
-        addQuestionSetting.setCenter(additionBox);
-        Scene additionScene = new Scene(addQuestionSetting,400,400);
+        addQuestionSetting.add(additionBox, 0, 1);
+        Scene additionScene = new Scene(addQuestionSetting,700,400);
        
+
+        //creating the scene for highscores
+        GridPane highScoreSetting = new GridPane();
+        VBox highScoreBox = new VBox();
+        highScoreBox.setPadding(new Insets(20,20,20,20));
+        highScoreBox.setSpacing(10);
+        
+        HighScoreView highScoreView = new HighScoreView(gameService);
+        Button backToMainMenu = new Button("Takaisin valikkoon");
+        highScoreBox.getChildren().addAll(highScoreView.getView(), backToMainMenu);
+        
+        highScoreSetting.add(highScoreBox, 0, 1);
+        Scene highScoreScene = new Scene(highScoreSetting,700,400);
+
         
         // alternating between scenes
         loginButton.setOnMouseClicked((event) -> {
@@ -154,16 +170,25 @@ public class FinglishAppUi extends Application {
             startScreen.setScene(newUserScene);
         });
         
-        playAGame.setOnAction((event) -> {
+        playAGameButton.setOnAction((event) -> {
+            gameBox.getChildren().addAll(gameView.getView());
+            gameSetting.add(gameBox, 0, 1);
+            gameSetting.add(endGame, 0, 2);
             startScreen.setScene(gameScene);
         });
         
-        addAQuestion.setOnAction((event) -> {
+        addAQuestionButton.setOnAction((event) -> {
             startScreen.setScene(additionScene);
+        });
+        
+        highScoreButton.setOnAction((event) -> {
+            startScreen.setScene(highScoreScene);
         });
         
         endGame.setOnAction((event) -> {
             gameService.finishAGame();
+            gameBox.getChildren().clear();
+            gameSetting.getChildren().clear();
             startScreen.setScene(menuScene);
         });
         
@@ -182,6 +207,11 @@ public class FinglishAppUi extends Application {
         startScreen.setScene(loginScene);
         startScreen.show();
            
+    }
+    
+    public void resetScene() {
+        
+        
     }
     
   

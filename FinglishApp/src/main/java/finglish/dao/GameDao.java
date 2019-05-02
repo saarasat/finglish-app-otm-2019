@@ -7,7 +7,5 @@ import finglish.domain.Game;
 public interface GameDao {
     
     Game create(Game game) throws Exception;
-    
     ArrayList<Game> getAll();  
-    
 }

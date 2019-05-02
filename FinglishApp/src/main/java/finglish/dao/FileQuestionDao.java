@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package finglish.dao;
 
 import java.io.File;
@@ -12,10 +8,7 @@ import java.util.List;
 import java.util.Scanner;
 import finglish.domain.Question;
 
-/**
- *
- * @author saarasat
- */
+
 public class FileQuestionDao implements QuestionDao {
     
     private ArrayList<Question> questions;
@@ -40,14 +33,29 @@ public class FileQuestionDao implements QuestionDao {
         }
     }
     
+    
+    
+    /**
+    * Generates a serial Id for the question.
+    * 
+    * @return an Integer value to be used for the question id.
+    */
+    
     private int generateId() {
         return questions.size() + 1;
     }
+    
+    /**
+    * Gets all the game-data stored.
+    * 
+    * @return an arraylist of game-data.
+    */
     
     @Override
     public ArrayList<Question> getAll() {
         return questions;
     }
+    
     
     @Override
     public Question create(Question question) throws Exception {
@@ -57,7 +65,13 @@ public class FileQuestionDao implements QuestionDao {
         return question;
     }
     
-    private void saveNewQuestion() throws Exception{
+    /**
+    * Saves the new question for permanent keeping.
+    * Uses a filewriter to write the question in the question-file. Private method for this class.
+    * 
+    */
+      
+    private void saveNewQuestion() throws Exception {
         try (FileWriter writer = new FileWriter(new File(file))) {
             for (Question question : questions) {
                 writer.write(question.getId() + 
