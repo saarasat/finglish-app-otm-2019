@@ -27,7 +27,8 @@ public class UserTest {
     
     @Before
     public void setUp() {
-        user = new User("username", "password");
+        user = new User("username", "password", 1);
+        this.user.setId(1);
     }
     
     @Test
@@ -40,10 +41,15 @@ public class UserTest {
         assertEquals("password", this.user.getPassword());
     }
     
-    @Test
+    @Test 
     public void methodGetIdReturnsId() {
-        this.user.setId(5);
-        assertEquals(5, this.user.getId());
+        assertEquals(1, this.user.getId());
+    }
+    
+    @Test
+    public void methodGetAdminIdReturnsAdmin() {
+        this.user.setAdmin();
+        assertEquals(1, this.user.getAdmin());
     }
     
     @Test

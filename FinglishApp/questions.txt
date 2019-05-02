@@ -29,3 +29,8 @@
 29;Mitä tarkoittaa Internetin datanlähetyksessä käytetty ACK?;saapumiskuittausta;yhteysvirhettä;datapyyntöä;otsaketietoa;saapumiskuittausta
 30;Mihin kerrokseen ensisijaisesti liittyy IP-osoitteet?;Kuljetuskerrokseen;Verkkokerrokseen;Linkkikerrokseen;Fyysiseen kerrokseen;Verkkokerrokseen
 31;Minkä protokollan avulla saadaan koneelle IP-osoite?;DHCP;HTTP;UDP;LAN;DHCP
+32;Mitä protokollaa kaikki liikenne Internetissä tarvitsee?;HTTP-protokollaa;IP-protokollaa;UDP-protokollaa;LAN-protokollaa;IP-protokollaa
+33;Mistä lyhenne NAT tulee?;Network address translation;Name address translation;Network automated translated;Network address transport;Network address translation
+34;Montako bittiä;32 bittiä;64 bittiä;128 bittiä;16 bittiä;32 bittiä
+35;Mikä on yleislähetysosoite aliverkossa;255.255.255.255;000.000.000.000;128.128.128.128;256.256.256.256;255.255.255.255
+36;Mihin käytetään DHCP:tä?;IP-osoitteen hakemiseen;Aliverkon määrittämiseen;Segmenttien tekemiseen;Pakettien pilkkomiseen;IP-osoitteen hakemiseen

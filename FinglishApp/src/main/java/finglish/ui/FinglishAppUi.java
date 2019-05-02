@@ -100,11 +100,14 @@ public class FinglishAppUi extends Application {
         
         Label welcomeLabel = new Label("Tervetuloa pelaamaan Finglishia!");
         Button playAGameButton = new Button("Pelaa");
+        
+        
         Button addAQuestionButton = new Button("Lisää kysymys");
         Button highScoreButton = new Button("Top 10");
         Button adminButton = new Button("Hallitse käyttäjätilejä");
         Button logOutButton = new Button("Kirjaudu ulos");         
-        menuBox.getChildren().addAll(welcomeLabel, playAGameButton, addAQuestionButton, highScoreButton, adminButton, logOutButton);
+        
+
         
         menuSetting.setCenter(menuBox);
         Scene menuScene = new Scene(menuSetting, 400,400);
@@ -152,7 +155,7 @@ public class FinglishAppUi extends Application {
         adminBox.setSpacing(10);
         
         
-        Button backFromAdminButton = new Button("Takaisin valikkoon");
+        Button backFromAdminButton = new Button("Takaisin");
         
         Scene adminScene = new Scene(adminSetting,700,400);
         
@@ -166,6 +169,11 @@ public class FinglishAppUi extends Application {
             }
             String password = user.getPassword();
             if (loginView.getPassword().equals(password)) {
+                if (this.user.getAdmin() == 1) {
+                    menuBox.getChildren().addAll(welcomeLabel, playAGameButton, addAQuestionButton, highScoreButton, adminButton, logOutButton);
+                } else {
+                    menuBox.getChildren().addAll(welcomeLabel, playAGameButton, highScoreButton, adminButton, logOutButton);                    
+                }
                 startScreen.setScene(menuScene);
                 loginInfo.setText("");
             }
@@ -219,9 +227,6 @@ public class FinglishAppUi extends Application {
         backFromAdminButton.setOnAction((event) -> {
            adminBox.getChildren().clear();
            adminSetting.getChildren().clear();
-           if (userDao.getAll().isEmpty()) {
-               startScreen.setScene(loginScene);
-           }
            startScreen.setScene(menuScene); 
         });
     

@@ -48,9 +48,7 @@ public class AdminView {
     
     public Parent getView() {
         
-        // Creating the admin-view
-        adminSetting = new GridPane();
-                
+        adminSetting = new GridPane();        
         usernameLabel = new Label("Käyttäjätunnus");
         
         adminSetting.setAlignment(Pos.CENTER);
@@ -61,9 +59,10 @@ public class AdminView {
         
         return adminSetting;
         
-        }
+    }
     
     public void resetUserList() {
+        
         adminSetting.getChildren().clear();
         
         if (user == null) {
@@ -77,8 +76,12 @@ public class AdminView {
                 adminSetting.add(createUserNode(users.get(i), 1), 0, i+3);
             }
         } else {
+            for (int i = 0; i < users.size(); i++) {
+                if (users.get(i).getId() == user.getId()) {
+                    adminSetting.add(createUserNode(users.get(i), 1), 0, i+3);
+                }
+            }
             usernameLabel.setText("Haluatko poistaa oman käyttäjätilisi?");
-            adminSetting.add(createUserNode(user, 0), 0, 5);
         }
      
     }
@@ -93,10 +96,6 @@ public class AdminView {
         } 
         deleteButton.setOnAction(e->{
             gameService.removeUser(user.getId());
-            if (users.size() == 1) {
-                deleteButton.setVisible(false);
-                userLabel.setVisible(false);
-            }
             resetUserList();
         });
                 

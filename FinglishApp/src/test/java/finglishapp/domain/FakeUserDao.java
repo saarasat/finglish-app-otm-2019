@@ -15,8 +15,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-
-
     
 public class FakeUserDao implements UserDao {
     
@@ -46,5 +44,20 @@ public class FakeUserDao implements UserDao {
             }
         }
         return null;
+    }
+    
+    @Override
+    public String findById(int id) {
+        for (User user : allUsers) {
+            if (user.getId() == id) {
+                return user.getUsername();
+            }
+        }
+        return null;
+    } 
+    
+    @Override
+    public void deleteUser(int id) {
+        allUsers.remove(id);
     }
 }
