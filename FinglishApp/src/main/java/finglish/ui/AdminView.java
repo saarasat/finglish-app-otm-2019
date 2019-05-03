@@ -71,10 +71,9 @@ public class AdminView {
         setting.getChildren().clear();
         
         if (user == null) {
-            
+            return; 
         }
-        
-        
+       
         if (this.user.getAdmin() == 1) {
             for (int i = 0; i < users.size(); i++) {
                 setting.add(createUserNode(users.get(i), 1), 0, i+3);
@@ -97,7 +96,7 @@ public class AdminView {
         if (admin == 0) {
             deleteButton.setText("Poista tämä käyttäjätili");
         } 
-        deleteButton.setOnAction(e->{
+        deleteButton.setOnAction((event)->{
             gameService.removeUser(user.getId());
             resetUserList();
         });

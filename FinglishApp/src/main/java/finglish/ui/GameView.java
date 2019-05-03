@@ -5,7 +5,6 @@ import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.GridPane;
 
 import finglish.domain.GameService;
 import finglish.domain.Question;
@@ -14,9 +13,6 @@ import javafx.geometry.Pos;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
@@ -47,7 +43,6 @@ public class GameView {
         setting.setAlignment(Pos.CENTER);
         setting.setVgap(10);
         setting.setHgap(10);
-        
         gameService.startANewGame();
         question = gameService.getTheNextQuestion();
         toggleGroup = new ToggleGroup();
@@ -102,47 +97,27 @@ public class GameView {
         });
 
         option1.setOnMouseClicked((event) -> {
-            if (!answeredAlready) {
-                if (question.checkIfCorrect(option1.getText())) {
-                    answerCheck.setText("Yay, oikein!");
-                    gameService.answerTheQuestion(true);
-                } else {
-                    answerCheck.setText("Sori, väärä vastaus");
-                    gameService.answerTheQuestion(false);
-                }
-                answeredAlready = true;
-            }
+            chooseOption(option1.getText());
         });
 
         option2.setOnMouseClicked((event) -> {
-            if (!answeredAlready) {
-                if (question.checkIfCorrect(option2.getText())) {
-                    answerCheck.setText("Yay, oikein!");
-                    gameService.answerTheQuestion(true);
-                } else {
-                    answerCheck.setText("Sori, väärä vastaus");
-                    gameService.answerTheQuestion(false);
-                }
-                answeredAlready = true;
-            }
+            chooseOption(option2.getText());
         });
 
         option3.setOnMouseClicked((event) -> {
-            if (!answeredAlready) {
-                if (question.checkIfCorrect(option3.getText())) {
-                    answerCheck.setText("Yay, oikein!");
-                    gameService.answerTheQuestion(true);
-                } else {
-                    answerCheck.setText("Sori, väärä vastaus");
-                    gameService.answerTheQuestion(false);
-                }
-                answeredAlready = true;
-            }
+            chooseOption(option3.getText());
         });
 
         option4.setOnMouseClicked((event) -> {
-            if (!answeredAlready) {
-                if (question.checkIfCorrect(option4.getText())) {
+            chooseOption(option4.getText());
+        });
+
+        return setting;
+    }
+    
+    public void chooseOption(String option) {
+        if (!answeredAlready) {
+                if (question.checkIfCorrect(option)) {
                     answerCheck.setText("Yay, oikein!");
                     gameService.answerTheQuestion(true);
                 } else {
@@ -151,9 +126,6 @@ public class GameView {
                 }
                 answeredAlready = true;
             }
-        });
-
-        return setting;
     }
 
     public void disableRadioButton() {

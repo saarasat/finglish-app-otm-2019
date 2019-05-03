@@ -7,14 +7,12 @@ package finglish.ui;
 
 import finglish.domain.GameService;
 import finglish.domain.Question;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-import javafx.scene.text.Text;
 
 
     public class AddQuestionsView {

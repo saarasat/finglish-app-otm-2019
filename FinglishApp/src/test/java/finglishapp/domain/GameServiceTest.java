@@ -30,8 +30,8 @@ import static org.junit.Assert.*;
  * @author saarasat
  */
 public class GameServiceTest {
-    
-    int account_id;
+ 
+    User user;
     GameService gameService;
     FakeGameDao gameDao;
     FakeQuestionDao questionDao;
@@ -39,7 +39,7 @@ public class GameServiceTest {
     Question question;
     
     public GameServiceTest() throws Exception {
-        this.account_id = 1;
+        this.user = new User("Tämä", "Tämä", 1);
         this.questionDao = new FakeQuestionDao();
         this.gameDao = new FakeGameDao();
         this.userDao = new FakeUserDao();
@@ -51,7 +51,7 @@ public class GameServiceTest {
     
     @Before
     public void setUp() {
-        gameService = new GameService(account_id, gameDao, questionDao, userDao);
+        gameService = new GameService(user, gameDao, questionDao, userDao);
         this.question = new Question("question1", "first option1", "second option1", "third option1", "fourth option1", "correct answer1");
     }
     

@@ -5,7 +5,6 @@ import finglish.domain.User;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
  
@@ -25,7 +24,6 @@ public class FileUserDao implements UserDao {
                 User u = new User(pieces[1], pieces[2], Integer.valueOf(pieces[3]));
                 users.add(u);
                 u.setId(id);
-                System.out.println(u.getUsername());
             }
         } catch (Exception e) {
             FileWriter writer = new FileWriter(new File(file));

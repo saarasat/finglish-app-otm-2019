@@ -123,9 +123,6 @@ public class GameService {
     */
  
     public void addQuestion(Question question) {
-        for (Question q : allQuestions) {
-            System.out.println(q.getQuestion());
-        }
         try {
             this.questionDao.create(question);        
         } catch (Exception e) {
@@ -199,7 +196,6 @@ public class GameService {
     public void startANewGame() {
         this.game = new Game();
         this.game.setAccountId(this.user.getId());
-        System.out.println(this.game.getAccountId());
         this.usedIndexes = new ArrayList<>();
     }
     

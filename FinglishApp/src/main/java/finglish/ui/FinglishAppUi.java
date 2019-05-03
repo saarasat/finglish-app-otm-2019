@@ -59,7 +59,7 @@ public class FinglishAppUi extends Application {
         String gameFile = properties.getProperty("gameFile");
         Image backGround = new Image("file:backgroundimage.png");
         this.background  = new BackgroundImage(backGround,
-            BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
+            BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT,
             BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
         this.gameDao = new FileGameDao(gameFile);
         this.questionDao = new FileQuestionDao(questionFile);
@@ -113,7 +113,7 @@ public class FinglishAppUi extends Application {
         //creating the scene for playing
         VBox gameSetting = createTheSetting();
         VBox gameBox = createTheViewBox();
-        gameBox.setPrefHeight(400);
+        gameBox.setPrefSize(400,400);
         
         gameView = new GameView(gameService);
         Button endGameButton = new Button("Lopeta peli");

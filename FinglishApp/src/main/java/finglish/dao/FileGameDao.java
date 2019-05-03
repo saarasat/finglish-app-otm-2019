@@ -4,10 +4,8 @@ package finglish.dao;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 import finglish.domain.Game;
-import finglish.domain.User;
 
 public class FileGameDao implements GameDao {
     

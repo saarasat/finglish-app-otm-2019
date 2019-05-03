@@ -5,12 +5,6 @@
  */
 package finglish.domain;
 
-import finglish.domain.Question;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Random;
-
 public class Game implements Comparable<Game>{
     
     private int id;
@@ -18,13 +12,11 @@ public class Game implements Comparable<Game>{
     private int questionCounter;
     private int correctAnswers;
     private int wrongAnswers;
-    private Date date;
     
     public Game() {
         this.questionCounter = 0;
         this.correctAnswers = 0;
         this.wrongAnswers = 0;
-        this.date = new Date();
     }
     
     public Game(int accountId, int correctAnswers, int questionCounter) {

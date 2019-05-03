@@ -4,7 +4,6 @@ package finglish.dao;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 import finglish.domain.Question;
 

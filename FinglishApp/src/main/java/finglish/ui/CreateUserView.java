@@ -7,8 +7,6 @@ package finglish.ui;
 
 
 import finglish.domain.GameService;
-import finglish.domain.User;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;

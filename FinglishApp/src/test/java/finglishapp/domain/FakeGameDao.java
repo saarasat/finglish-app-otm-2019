@@ -37,5 +37,10 @@ public class FakeGameDao implements GameDao {
         game.setId(allGames.size()+1);
         allGames.add(game);
         return game;
-    }   
+    } 
+    
+    @Override
+    public void delete(int id) throws Exception {
+        
+    }
 }
