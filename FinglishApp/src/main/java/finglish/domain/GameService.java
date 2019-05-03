@@ -7,6 +7,7 @@
 package finglish.domain;
 
 import finglish.domain.Game;
+import finglish.domain.User;
 import finglish.dao.GameDao;
 import finglish.dao.QuestionDao;
 import finglish.dao.UserDao;
@@ -25,20 +26,26 @@ public class GameService {
     private ArrayList<User> allUsers;
     private ArrayList<Integer> usedIndexes;
     private Game game;
+    private User user;
     private QuestionDao questionDao;
     private GameDao gameDao;
     private UserDao userDao;
     private Random random;
     private int index;
 
-    public GameService(int accountId, GameDao gameDao, QuestionDao questionDao, UserDao userDao) {
-        this.accountId = accountId;
+    public GameService(User user, GameDao gameDao, QuestionDao questionDao, UserDao userDao) {
+        
         this.gameDao = gameDao;
         this.questionDao = questionDao;
         this.allQuestions = questionDao.getAll();
         this.userDao = userDao;
         this.allUsers = userDao.getAll();
+        this.user = user;
         this.random = new Random();
+    }
+    
+    public void setUser(User user) {
+        this.user = user;
     }
   
     
@@ -52,11 +59,11 @@ public class GameService {
     */
     
     public boolean addUser(String username, String password, int adminStatus)  {
-        System.out.println("täällä");
         if (userDao.findByUsername(username) != null) {
             return false;
         }
         User user = new User(username, password, adminStatus);
+
         try {
             userDao.create(user);
         } catch(Exception e) {
@@ -66,12 +73,23 @@ public class GameService {
         return true;
     }
     
+    /**
+    * Removes User-account.
+    * Uses the defined UserDao to find the user to be removed and removes it
+    * 
+    * @param   id of the user that will be removed   
+    * 
+    * @return a boolean on whether the user was successfully removed
+    */
+    
     public boolean removeUser(int id)  {
         if (userDao.findById(id) == null) {
             return false;
         }
         try {
-            userDao.deleteUser(id);
+            gameDao.delete(id);
+            userDao.delete(id);
+
         } catch(Exception e) {
             return false;
         }
@@ -130,7 +148,7 @@ public class GameService {
             return null;
         }
         
-        if (this.game.getQuestionCounter() == 1) {
+        if (this.game.getQuestionCounter() == 0) {
             this.usedIndexes.add(index);
         }
 
@@ -145,12 +163,17 @@ public class GameService {
         Question question = allQuestions.get(index);
         question.shuffleOptions();
         this.usedIndexes.add(index);
+        this.game.setQuestionCounter();
          
         return question;
     }
     
-    private int randomizer(int i) {
-        
+    /**
+     * @param i 
+     * @return A random integer between 0 to i
+     */
+    
+    private int randomizer(int i) {   
         return this.random.nextInt(i);
     }
 
@@ -175,7 +198,8 @@ public class GameService {
     
     public void startANewGame() {
         this.game = new Game();
-        this.game.setAccountId(accountId);
+        this.game.setAccountId(this.user.getId());
+        System.out.println(this.game.getAccountId());
         this.usedIndexes = new ArrayList<>();
     }
     
@@ -202,9 +226,13 @@ public class GameService {
     * @return a String of how many answers are correct out of ten.
     * 
     */
-    
-    
+     
     public String getTotalScore() {
+        int correct = this.game.getAmountOfCorrectAnswers();
+        if (correct < 4) return correct + "/10 oikein" + ", pystyt parempaan!";
+        if (4 <= correct && correct < 7) return correct + "/10 oikein" + ", aika hyvin jo!";
+        if (7 <= correct && correct <= 9) return correct + "/10 oikein" + ", vau melkoinen tietäjä!";
+        if (correct == 10) return correct + "/10 oikein" + ", täydellistä!!";
         return this.game.getAmountOfCorrectAnswers() + "/10 oikein";
     }
 
@@ -213,11 +241,10 @@ public class GameService {
     * Tells what point the game is going at.
     * 
     * @return a String of how many questions have been answered out of ten.
-    * 
     */
 
     public String getTheQuestionNumber() {
-        return (this.game.getQuestionCounter() + 1) + "/10";
+        return (this.game.getQuestionCounter()) + "/10";
     }
     
     
@@ -239,16 +266,31 @@ public class GameService {
         }   
     }
     
+    /**
+     * Returns the 10 best scores of all games
+     * 
+     * @return A string containing the order numbers, best players and the scores of the 10 best games in 10 rows
+     */
+    
     public String highScoreList() {
-        this.allGames = gameDao.getAll();
-        Collections.sort(allGames);
+        ArrayList<Game> highScores = gameDao.getAll();
+        if (highScores.isEmpty()) return "Kukaan ei ole pelannut vielä";
+        Collections.sort(highScores);
         StringBuilder list = new StringBuilder();
         for (int i = 0; i < 10; i++) {
-            String username = getUsernameForAGame(allGames.get(i));
-            list.append((i+1) + ". " + getUsernameForAGame(allGames.get(i)) + "  " + allGames.get(i).getAmountOfCorrectAnswers() + "/10" + "\n");
+            if (highScores.size() <= i) return list.toString();
+            list.append((i+1) + ". " 
+                + getUsernameForAGame(highScores.get(i)) + "  " 
+                + highScores.get(i).getAmountOfCorrectAnswers() + "/10" + "\n" + "\n");
         } 
         return list.toString();
     }
+    
+    /**
+     * Gets the username of a game
+     * @param game
+     * @return The username of an account who played the game as a string
+     */
     
     public String getUsernameForAGame(Game game) {
         int idOfThePlayer = game.getAccountId();

@@ -2,7 +2,6 @@
 package finglish.ui;
 
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -10,15 +9,27 @@ import javafx.scene.layout.GridPane;
 
 import finglish.domain.GameService;
 import finglish.domain.Question;
+import javafx.geometry.Orientation;
+import javafx.geometry.Pos;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.Text;
 
 public class GameView {
 
     private GameService gameService;
     private Question question;
 
+    private FlowPane setting;
     private Label questionLabel;
+    private Text totalScore;
     private Label answerCheck;
     private Label questionsAnswered;
     private boolean answeredAlready;
@@ -32,15 +43,31 @@ public class GameView {
 
     public Parent getView() {
 
-        GridPane setting = new GridPane();
-
+        setting = new FlowPane(Orientation.VERTICAL);
+        setting.setAlignment(Pos.CENTER);
+        setting.setVgap(10);
+        setting.setHgap(10);
+        
         gameService.startANewGame();
         question = gameService.getTheNextQuestion();
         toggleGroup = new ToggleGroup();
 
         answerCheck = new Label("");
+        answerCheck.setFont(Font.font("verdana", FontPosture.REGULAR, 15));
         questionsAnswered = new Label(this.gameService.getTheQuestionNumber());
+        questionsAnswered.setFont(Font.font("verdana", FontPosture.REGULAR, 15));
         questionLabel = new Label(question.getQuestion());
+        questionLabel.setWrapText(true);
+        questionLabel.setFont(Font.font("verdana", FontPosture.REGULAR, 15));
+        totalScore = new Text();
+        totalScore.setFont(Font.font("verdana", FontPosture.REGULAR, 15));
+
+        VBox progressBox = new VBox();
+        progressBox.getChildren().addAll(questionsAnswered,answerCheck, questionLabel);
+        progressBox.setAlignment(Pos.CENTER);
+        progressBox.setSpacing(15);
+        progressBox.setPadding(new Insets(10,10,10,0));
+          
         option1 = new RadioButton();
         option2 = new RadioButton();
         option3 = new RadioButton();
@@ -51,22 +78,14 @@ public class GameView {
         option3.setText(question.getOption());
         option4.setText(question.getOption());
 
-        next = new Button("Seuraava");
-
-        setting.setAlignment(Pos.CENTER);
-        setting.setVgap(10);
-        setting.setHgap(10);
-        setting.setPadding(new Insets(10, 10, 10, 10));
-
-        setting.add(questionsAnswered, 0, 0);
-        setting.add(answerCheck, 0, 1);
-        setting.add(questionLabel, 0, 2);
-        setting.add(option1, 0, 3);
-        setting.add(option2, 0, 4);
-        setting.add(option3, 0, 5);
-        setting.add(option4, 0, 6);
-        setting.add(next, 0, 10);
-
+        next = new Button("Seuraava");        
+        VBox nextBox = new VBox();
+        nextBox.getChildren().addAll(next);
+        nextBox.setAlignment(Pos.CENTER);
+        nextBox.setSpacing(15);
+        nextBox.setPadding(new Insets(20,20,20,20));
+        
+        setting.getChildren().addAll(progressBox, option1, option2, option3, option4, nextBox);        
         toggleGroup.getToggles().addAll(option1, option2, option3, option4);
 
         next.setOnAction((event) -> {
@@ -164,8 +183,9 @@ public class GameView {
 
         } else {
             next.setVisible(false);
-            questionLabel.setText(this.gameService.getTotalScore());
-            questionsAnswered.setText("");
+            setting.getChildren().clear();
+            totalScore.setText(this.gameService.getTotalScore());
+            setting.getChildren().addAll(totalScore);
             disableRadioButton();
         }
     }

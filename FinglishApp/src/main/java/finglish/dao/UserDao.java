@@ -10,6 +10,6 @@ public interface UserDao {
     ArrayList<User> getAll();
     User findByUsername(String username);  
     String findById(int id);
-    void deleteUser(int id) throws Exception;
+    void delete(int id) throws Exception;
  
 }

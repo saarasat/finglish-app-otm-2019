@@ -56,6 +56,15 @@ public class FileQuestionDao implements QuestionDao {
         return questions;
     }
     
+ 
+    /**
+    * Adds a Question for permanent keeping.
+    * Overrides the method of QuestionDao for create.
+    * 
+    * @param question takes in an object of the Question-class, without the id, which is generated in this method.
+    * 
+    * @return a successfully created and saved new question.
+    */   
     
     @Override
     public Question create(Question question) throws Exception {

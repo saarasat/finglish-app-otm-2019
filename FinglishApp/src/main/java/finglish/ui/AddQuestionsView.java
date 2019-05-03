@@ -14,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
 
 
     public class AddQuestionsView {
@@ -29,6 +30,7 @@ import javafx.scene.layout.GridPane;
         
         GridPane setting = new GridPane();
         
+ 
         
         Label messageLabel = new Label("");
         TextField questionText = new TextField();
@@ -42,7 +44,6 @@ import javafx.scene.layout.GridPane;
         setting.setAlignment(Pos.CENTER);
         setting.setVgap(10);
         setting.setHgap(10);
-        setting.setPadding(new Insets(10,10,10,10));
         
         setting.add(messageLabel,0,0);
         setting.add(new Label("Kysymys"), 0, 1);

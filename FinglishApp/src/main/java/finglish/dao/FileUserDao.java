@@ -41,6 +41,9 @@ public class FileUserDao implements UserDao {
     */
     
     private int generateId() {
+        if (users.size() == 0) {
+            return 1;
+        }
         int lastId = users.get(users.size() - 1).getId();
         return lastId + 1;
     }
@@ -61,6 +64,12 @@ public class FileUserDao implements UserDao {
         return null;
     }
     
+    /**
+    * Uses the id to find a user out of all users.
+    * 
+    * @return a User which has the same username as the one searched for.
+    */
+    
     @Override
     public String findById(int id) {
         for (User user : users) {
@@ -70,11 +79,6 @@ public class FileUserDao implements UserDao {
         }
         return null;
     }
-    
- 
-
-
-    
     
     /**
     * Gets all the users stored.
@@ -123,7 +127,7 @@ public class FileUserDao implements UserDao {
     }
     
     @Override
-    public void deleteUser(int id) throws Exception {
+    public void delete(int id) throws Exception {
         for (User user : users) {
             if (user.getId() == id) {
                 users.remove(user);

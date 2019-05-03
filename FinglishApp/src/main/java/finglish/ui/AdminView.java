@@ -9,16 +9,14 @@ import finglish.dao.UserDao;
 import finglish.domain.GameService;
 import finglish.domain.User;
 import java.util.ArrayList;
-import java.util.List;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
@@ -34,8 +32,8 @@ public class AdminView {
     private UserDao userDao;
     private ArrayList<User> users;
     private User user;
-    private GridPane adminSetting;
-    private Label usernameLabel;
+    private GridPane setting;
+   
     
 
     public AdminView (GameService gameService, UserDao userDao, ArrayList<User> users, User user) {
@@ -48,40 +46,45 @@ public class AdminView {
     
     public Parent getView() {
         
-        adminSetting = new GridPane();        
-        usernameLabel = new Label("Käyttäjätunnus");
+        setting = new GridPane();        
         
-        adminSetting.setAlignment(Pos.CENTER);
-        adminSetting.setVgap(10);
-        adminSetting.setHgap(10);
-        adminSetting.setPadding(new Insets(10,10,10,10));
+        setting.setAlignment(Pos.CENTER);
+        setting.setVgap(10);
+        setting.setHgap(10);
         resetUserList();
-        
-        return adminSetting;
+        if (user.getAdmin() == 1) {
+           ScrollPane userScrollbar = new ScrollPane();  
+           userScrollbar.setContent(setting);
+           BorderPane adminSetting = new BorderPane(userScrollbar);
+           adminSetting.setPrefSize(300, 200);
+           return adminSetting;
+            
+        } else {
+            setting.add(new Label("Haluatko poistaa oman käyttäjätilisi?"),0,2);
+            return setting;
+        }
         
     }
     
     public void resetUserList() {
         
-        adminSetting.getChildren().clear();
+        setting.getChildren().clear();
         
         if (user == null) {
             
         }
         
-        adminSetting.add(usernameLabel, 0, 2);
         
         if (this.user.getAdmin() == 1) {
             for (int i = 0; i < users.size(); i++) {
-                adminSetting.add(createUserNode(users.get(i), 1), 0, i+3);
+                setting.add(createUserNode(users.get(i), 1), 0, i+3);
             }
         } else {
             for (int i = 0; i < users.size(); i++) {
                 if (users.get(i).getId() == user.getId()) {
-                    adminSetting.add(createUserNode(users.get(i), 1), 0, i+3);
+                    setting.add(createUserNode(users.get(i), 1), 0, i+3);
                 }
             }
-            usernameLabel.setText("Haluatko poistaa oman käyttäjätilisi?");
         }
      
     }

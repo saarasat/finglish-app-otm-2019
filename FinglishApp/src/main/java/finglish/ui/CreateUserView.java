@@ -44,7 +44,6 @@ public class CreateUserView {
         setting.setAlignment(Pos.CENTER);
         setting.setVgap(10);
         setting.setHgap(10);
-        setting.setPadding(new Insets(10, 10, 10, 10)); 
             
         setting.add(messageLabel,0,0);
         setting.add(usernameLabel, 0, 1);
@@ -71,17 +70,12 @@ public class CreateUserView {
                 messageLabel.setText("Käyttäjänimen oltava 3-60 merkkiä");
             } else if (!gameService.validateInput(passwordOne) ){
                 messageLabel.setText("Salasanan oltava 3-60 merkkiä");
+            } else if (!passwordOne.equals(passwordTwo)) {
+                messageLabel.setText("Salasanat eivät täsmää");
             } else if ( gameService.addUser(username, passwordOne, adminStatus) ){
                 messageLabel.setText("Tili luotu! loggaa ineen");
-                usernameLabel.setVisible(false);
-                passwordLabel.setVisible(false);
-                password2Label.setVisible(false);
-                adminLabel.setVisible(false);
-                usernameText.setVisible(false);
-                passwordOneText.setVisible(false);
-                passwordTwoText.setVisible(false);
-                adminCheckBox.setVisible(false);
-                createUserButton.setVisible(false);
+                setting.getChildren().clear();
+                setting.add(messageLabel, 1,3);
             } else {
                 messageLabel.setText("Käyttäjänimen oltava uniikki");
             }

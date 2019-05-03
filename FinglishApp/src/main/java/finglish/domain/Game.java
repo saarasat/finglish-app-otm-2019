@@ -50,17 +50,18 @@ public class Game implements Comparable<Game>{
     }
     
     public int getAmountOfCorrectAnswers() {
-        System.out.println(date);
         return correctAnswers;
     }
     
     public void setACorrectAnswer() {
         this.correctAnswers++;
-        this.questionCounter++;
     }
     
     public void setAWrongAnswer() {
         this.wrongAnswers++;
+    }
+    
+    public void setQuestionCounter(){
         this.questionCounter++;
     }
     

@@ -1,5 +1,3 @@
-12;Juuu;juu;1
-13;aaa;aaa;1
-14;bbb;bbb;0
-15;dddd;ddddddd;1
-16;juu;juu;1
+1;aaa;aaa;1
+2;aaab;aaa;1
+3;bbb;aaa;1

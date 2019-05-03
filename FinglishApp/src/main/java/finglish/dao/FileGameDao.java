@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import finglish.domain.Game;
+import finglish.domain.User;
 
 public class FileGameDao implements GameDao {
     
@@ -39,7 +40,11 @@ public class FileGameDao implements GameDao {
     */
     
     private int generateId() {
-        return games.size() + 1;
+        if (games.size() == 0) {
+            return 1;
+        }
+        int lastId = games.get(games.size() - 1).getId();
+        return lastId + 1;
     }
 
     /**
@@ -85,6 +90,17 @@ public class FileGameDao implements GameDao {
                     + ";" + game.getQuestionCounter() + "\n");
             }
         }
+    }
+    
+    @Override
+    public void delete(int accountId) throws Exception {
+        
+        for (Game game : games) {
+            if (game.getAccountId() == accountId) {
+                games.remove(game);                
+            }
+        }
+        saveNewGame();
     }
     
 }
