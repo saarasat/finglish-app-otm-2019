@@ -8,5 +8,5 @@ public interface GameDao {
     
     Game create(Game game) throws Exception;
     ArrayList<Game> getAll();
-    void delete(int accountId) throws Exception;
+    boolean findById(int accountId);
 }

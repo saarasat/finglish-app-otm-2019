@@ -31,8 +31,13 @@
 31;Minkä protokollan avulla saadaan koneelle IP-osoite?;DHCP;HTTP;UDP;LAN;DHCP
 32;Mitä protokollaa kaikki liikenne Internetissä tarvitsee?;HTTP-protokollaa;IP-protokollaa;UDP-protokollaa;LAN-protokollaa;IP-protokollaa
 33;Mistä lyhenne NAT tulee?;Network address translation;Name address translation;Network automated translated;Network address transport;Network address translation
-34;Montako bittiä on IPv4-osoitteessa?;32 bittiä;64 bittiä;128 bittiä;16 bittiä;32 bittiä
+34;Montako bittiä;32 bittiä;64 bittiä;128 bittiä;16 bittiä;32 bittiä
 35;Mikä on yleislähetysosoite aliverkossa;255.255.255.255;000.000.000.000;128.128.128.128;256.256.256.256;255.255.255.255
 36;Mihin käytetään DHCP:tä?;IP-osoitteen hakemiseen;Aliverkon määrittämiseen;Segmenttien tekemiseen;Pakettien pilkkomiseen;IP-osoitteen hakemiseen
 37;Mikä on suomenkielinen nimi P2P:lle?;Vertaistoimijamalli;Kaveriverkko;Lähimmäisverkkomalli;Vertaismalli;Vertaistoimijamalli
 38;Mitä protokollaa käytetään sähköpostin lähettämisessä?;SMTP;MPM;SSP;MTS;SMTP
+39;Mitä authentication on suomeksi?;Salaamista;Yhteyden muodostamista;Todentamista;Luottamista;Todentamista
+40;Mikä seuraavista on julkisen avaimen salausalgoritmi?;RSS;RSA;SSP;OTM;RSA
+41;Mitä ensisijaisesti tarkoitetaan kirjainyhdistelmällä CA?;Varmentajaa;Tietokonesovellusta;Palvelinklusteria;Laskentatehoa;Varmentajaa
+42;Mihin tietoliikenteen asiaan liittyy salattu tiiviste?;Viestien digitaaliseen allekirjoitukseen;TCP-yhteyden ylläpitoon;IP-pakettien järjestämiseen;Sähköpostiviestien koon pienentämiseen;Viestien digitaaliseen allekirjoitukseen
+43;Mikä suojaa organisaation sisäistä verkkoa ulkopuolisilta?;Palomuuri;Palvelinverkko;RSA;ACK;Palomuuri

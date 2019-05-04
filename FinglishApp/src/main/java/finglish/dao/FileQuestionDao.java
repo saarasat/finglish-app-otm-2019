@@ -6,12 +6,14 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 import finglish.domain.Question;
+import java.util.Random;
 
 
 public class FileQuestionDao implements QuestionDao {
     
     private ArrayList<Question> questions;
     private String file;
+    private Random random;
     
     public FileQuestionDao(String file) throws Exception {
         questions = new ArrayList<>();
@@ -41,9 +43,9 @@ public class FileQuestionDao implements QuestionDao {
     */
     
     private int generateId() {
-        return questions.size() + 1;
+        this.random = new Random();
+        return random.nextInt(99999999);
     }
-    
     /**
     * Gets all the game-data stored.
     * 
@@ -84,10 +86,10 @@ public class FileQuestionDao implements QuestionDao {
             for (Question question : questions) {
                 writer.write(question.getId() 
                         + ";" + question.getQuestion() 
-                        + ";" + question.getOption() 
-                        + ";" + question.getOption() 
-                        + ";" + question.getOption() 
-                        + ";" + question.getOption() 
+                        + ";" + question.getAnswerOptions()[0]
+                        + ";" + question.getAnswerOptions()[1]
+                        + ";" + question.getAnswerOptions()[2]
+                        + ";" + question.getAnswerOptions()[3]
                         + ";" + question.getCorrectAnswer() + "\n");
                 System.out.println(question.getQuestion());
             }

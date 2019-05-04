@@ -38,9 +38,10 @@ public class FakeGameDao implements GameDao {
         allGames.add(game);
         return game;
     } 
+
     
     @Override
-    public void delete(int id) throws Exception {
-        
+    public boolean findById(int accountId) {
+        return true;
     }
 }

@@ -6,13 +6,16 @@ import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Random;
 
  
 public class FileUserDao implements UserDao {
     private ArrayList<User> users;
     private String file;
+    private Random random;
     
     public FileUserDao(String file) throws Exception {
+        
         users = new ArrayList<>();
         this.file = file;
         
@@ -39,11 +42,9 @@ public class FileUserDao implements UserDao {
     */
     
     private int generateId() {
-        if (users.size() == 0) {
-            return 1;
-        }
-        int lastId = users.get(users.size() - 1).getId();
-        return lastId + 1;
+        this.random = new Random();
+        return random.nextInt(99999999);
+
     }
     
     /**

@@ -5,7 +5,9 @@
  */
 package finglish.ui;
 
+import finglish.dao.GameDao;
 import finglish.dao.UserDao;
+import finglish.domain.Game;
 import finglish.domain.GameService;
 import finglish.domain.User;
 import java.util.ArrayList;
@@ -31,6 +33,8 @@ public class AdminView {
     private GameService gameService;
     private UserDao userDao;
     private ArrayList<User> users;
+    private GameDao gameDao;
+    private ArrayList<Game> games;
     private User user;
     private GridPane setting;
    
@@ -61,6 +65,7 @@ public class AdminView {
             
         } else {
             setting.add(new Label("Haluatko poistaa oman käyttäjätilisi?"),0,2);
+            setting.setPrefSize(400,400);
             return setting;
         }
         
@@ -70,18 +75,15 @@ public class AdminView {
         
         setting.getChildren().clear();
         
-        if (user == null) {
-            return; 
-        }
-       
+
         if (this.user.getAdmin() == 1) {
             for (int i = 0; i < users.size(); i++) {
-                setting.add(createUserNode(users.get(i), 1), 0, i+3);
+                setting.add(createUserNode(users.get(i), 1), 1, i+2);
             }
         } else {
             for (int i = 0; i < users.size(); i++) {
                 if (users.get(i).getId() == user.getId()) {
-                    setting.add(createUserNode(users.get(i), 1), 0, i+3);
+                    setting.add(createUserNode(users.get(i), 0), 0, i+2);
                 }
             }
         }
@@ -95,7 +97,11 @@ public class AdminView {
         Button deleteButton = new Button("Poista");
         if (admin == 0) {
             deleteButton.setText("Poista tämä käyttäjätili");
-        } 
+        } else if (users.size() == 1) {
+            if (this.user.getId() == user.getId()) {
+                deleteButton.setText("Poista tämä käyttäjätili");
+            }
+        }
         deleteButton.setOnAction((event)->{
             gameService.removeUser(user.getId());
             resetUserList();
@@ -108,6 +114,8 @@ public class AdminView {
         userBox.getChildren().addAll(userLabel, spacer, deleteButton);
         return userBox;
     }
+    
+
 
 
     

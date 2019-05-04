@@ -82,7 +82,6 @@ import javafx.scene.layout.GridPane;
                     thirdOptionText.getText(),
                     fourthOptionText.getText(),
                     correctOptionText.getText());           
-            
                 gameService.addQuestion(questionToAdd);
                 
                 messageLabel.setText("Kysymys lisätty!");
@@ -91,7 +90,8 @@ import javafx.scene.layout.GridPane;
                 secondOptionText.clear();
                 thirdOptionText.clear();
                 fourthOptionText.clear();
-                correctOptionText.clear();        
+                correctOptionText.clear();
+
             }     
         });
         

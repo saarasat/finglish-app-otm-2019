@@ -13,6 +13,7 @@ import finglish.domain.Question;
 import finglishapp.domain.FakeQuestionDao;
 import java.io.File;
 import java.io.FileWriter;
+import java.util.ArrayList;
 import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -37,14 +38,52 @@ public class FileQuestionDaoTest {
     @Before
     public void setUp() throws Exception {
         questionFile = testFolder.newFile("testQuestions.txt");
-        questionDao = new FileQuestionDao("testQuestions.txt");
+        
+        try(FileWriter file = new FileWriter(questionFile.getAbsolutePath())) {
+            file.write("1;Kysymys1?;Vaihtoehto1a;Vaihtoehto1b;Vaihtoehto1c;Vaihtoehto1d;Oikeavastaus1\n");
+            file.write("2;Kysymys2?;Vaihtoehto2a;Vaihtoehto2b;Vaihtoehto2c;Vaihtoehto2d;Oikeavastaus2\n");
+        }     
+        questionDao = new FileQuestionDao(questionFile.getAbsolutePath());
         
     }
     
     @Test
-    public void methodForGettingQuestionsWorksInitially() {
-        List<Question> questions = questionDao.getAll();
-        assertEquals(0, questions.size());      
-    }    
+    public void allQuestionsAreReadFromAFile() {
+        ArrayList<Question> allQuestions = questionDao.getAll();
+        assertEquals(2, allQuestions.size());      
+    }   
+    
+    @Test
+    public void questionsAreReadCorrectlyFromAFile() {
+        ArrayList<Question> allQuestions = questionDao.getAll();
+        assertEquals("Kysymys1?", allQuestions.get(0).getQuestion());
+        assertEquals("Kysymys2?", allQuestions.get(1).getQuestion());
+    }
+    
+    @Test
+    public void questionIdsAreSetCorrectlyAfterReadingFromAFile() {
+        ArrayList<Question> allQuestions = questionDao.getAll();
+        assertEquals(1, allQuestions.get(0).getId());
+        assertEquals(2, allQuestions.get(1).getId());
+    }
+
+    @Test
+    public void aValidQuestionCanBeCreated() throws Exception {
+        Question question = questionDao.create(new Question("Kysymys3",
+                "Vaihtoehto3a", 
+                "Vaihtoehto3b", 
+                "Vaihtoehto3c", 
+                "Vaihtoehto3d",
+                "Vastaus"));
+        assertEquals("Vastaus", question.getCorrectAnswer());
+    }
+    
+    
+
+    
+    @After
+    public void tearDown() {
+        questionFile.delete();
+    }
     
 }

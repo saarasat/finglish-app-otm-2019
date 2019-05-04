@@ -16,6 +16,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class GameService {
     
@@ -38,6 +40,7 @@ public class GameService {
         this.gameDao = gameDao;
         this.questionDao = questionDao;
         this.allQuestions = questionDao.getAll();
+        System.out.println(allQuestions.size());
         this.userDao = userDao;
         this.allUsers = userDao.getAll();
         this.user = user;
@@ -86,16 +89,16 @@ public class GameService {
         if (userDao.findById(id) == null) {
             return false;
         }
-        try {
-            gameDao.delete(id);
+        
+        try {     
             userDao.delete(id);
-
         } catch(Exception e) {
+            System.out.println(id);
             return false;
         }
-
         return true;
     }
+
   
     
     /**
@@ -141,22 +144,9 @@ public class GameService {
 
     public Question getTheNextQuestion() {
 
-        if (this.game.getQuestionCounter() == 10) {
-            return null;
-        }
-        
-        if (this.game.getQuestionCounter() == 0) {
-            this.usedIndexes.add(index);
-        }
-
         index = randomizer(allQuestions.size() - 1);
-
-        if (usedIndexes.size() != 1) {
-            while (this.usedIndexes.contains(index)) {
-                index = randomizer(allQuestions.size() - 1);
-            }
-        }
-
+        if (index == -1) return null;
+        
         Question question = allQuestions.get(index);
         question.shuffleOptions();
         this.usedIndexes.add(index);
@@ -170,8 +160,19 @@ public class GameService {
      * @return A random integer between 0 to i
      */
     
-    private int randomizer(int i) {   
-        return this.random.nextInt(i);
+    private int randomizer(int i) {  
+        int index;   
+        if (this.game.getQuestionCounter() == 10) return -1;
+        
+        index = this.random.nextInt(i);
+        if (this.game.getQuestionCounter() == 0) this.usedIndexes.add(index);
+
+        if (usedIndexes.size() != 1) {
+            while (this.usedIndexes.contains(index)) {
+                index = randomizer(i);
+            }
+        }      
+        return index;
     }
 
     
@@ -212,7 +213,6 @@ public class GameService {
         } catch (Exception e) {
             System.out.println("Ei onnistunut pelin tallentaminen");
         }
-        startANewGame();
     }
     
     
@@ -245,24 +245,6 @@ public class GameService {
     
     
     /**
-    * Games for the account.
-    * Initiates an ArrayList of games and adds all the games of the current account into it.
-    * 
-    * @param allGames takes in the data of all games for filtering.
-    * 
-    */
-    
-    public void getAccountsGames(ArrayList<Game> allGames) {
-        this.accountsGames = new ArrayList<>();
-        
-        for (Game game : allGames) {
-            if (game.getAccountId() == this.accountId) {
-                accountsGames.add(game);
-            }
-        }   
-    }
-    
-    /**
      * Returns the 10 best scores of all games
      * 
      * @return A string containing the order numbers, best players and the scores of the 10 best games in 10 rows
@@ -270,14 +252,18 @@ public class GameService {
     
     public String highScoreList() {
         ArrayList<Game> highScores = gameDao.getAll();
-        if (highScores.isEmpty()) return "Kukaan ei ole pelannut vielä";
         Collections.sort(highScores);
         StringBuilder list = new StringBuilder();
+        int placement = 1;
         for (int i = 0; i < 10; i++) {
             if (highScores.size() <= i) return list.toString();
-            list.append((i+1) + ". " 
+            if (getUsernameForAGame(highScores.get(i)) == null) {
+                continue;
+            }
+            list.append((placement) + ". " 
                 + getUsernameForAGame(highScores.get(i)) + "  " 
                 + highScores.get(i).getAmountOfCorrectAnswers() + "/10" + "\n" + "\n");
+            placement++;
         } 
         return list.toString();
     }

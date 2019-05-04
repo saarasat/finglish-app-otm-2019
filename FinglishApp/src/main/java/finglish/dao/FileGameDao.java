@@ -6,11 +6,15 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 import finglish.domain.Game;
+import finglish.domain.User;
+import java.util.Random;
+
 
 public class FileGameDao implements GameDao {
     
     private ArrayList<Game> games;
     private String file;
+    private Random random;
     
     public FileGameDao(String file) throws Exception {
         games = new ArrayList<>();
@@ -38,11 +42,8 @@ public class FileGameDao implements GameDao {
     */
     
     private int generateId() {
-        if (games.size() == 0) {
-            return 1;
-        }
-        int lastId = games.get(games.size() - 1).getId();
-        return lastId + 1;
+        this.random = new Random();
+        return random.nextInt(99999999);
     }
 
     /**
@@ -73,6 +74,17 @@ public class FileGameDao implements GameDao {
         return game;
     }
     
+    @Override
+    public boolean findById(int accountId) {
+        for (Game game : games) {
+            if (game.getAccountId() == accountId) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    
     /**
     * Saves the game question for permanent keeping.
     * Uses a filewriter to write the game in the games-file. Private method for this class.
@@ -89,16 +101,4 @@ public class FileGameDao implements GameDao {
             }
         }
     }
-    
-    @Override
-    public void delete(int accountId) throws Exception {
-        
-        for (Game game : games) {
-            if (game.getAccountId() == accountId) {
-                games.remove(game);                
-            }
-        }
-        saveNewGame();
-    }
-    
 }

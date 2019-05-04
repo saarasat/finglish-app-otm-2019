@@ -58,6 +58,12 @@ public class FakeUserDao implements UserDao {
     
     @Override
     public void delete(int id) {
-        allUsers.remove(id);
+        for (User user : allUsers) {
+            if (user.getId() == id) {
+                System.out.println(user.getId());
+                System.out.println(id);
+                allUsers.remove(user);
+            }
+        }
     }
 }

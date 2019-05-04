@@ -84,8 +84,8 @@ public class FinglishAppUi extends Application {
         Label newUserLabel = new Label("Ei vielä tunnusta?");
         Button newUserButton = new Button("Luo uusi tunnus");
 
-        loginBox.getChildren().addAll(headerCreator("Finglish Quiz"), loginView.getView(), loginButton);
-        loginSetting.getChildren().addAll(loginInfo, loginBox, newUserLabel, newUserButton);
+        loginBox.getChildren().addAll(headerCreator("Finglish Quiz"), loginInfo, loginView.getView(), loginButton);
+        loginSetting.getChildren().addAll(loginBox, newUserLabel, newUserButton);
         Scene loginScene = new Scene(loginSetting, 700, 500);
                  
         
@@ -221,9 +221,7 @@ public class FinglishAppUi extends Application {
                 gameService.setUser(user);
             } else if (!this.users.contains(this.user.getId())) {
                 clearTheStage(adminSetting, adminBox, startScreen, loginScene);
-                clearTheStage(adminSetting, adminBox, startScreen, loginScene);
                 clearTheStage(menuSetting, menuBox, startScreen, loginScene);
-
                 this.user = null;
                 gameService.setUser(user);
 
@@ -266,7 +264,7 @@ public class FinglishAppUi extends Application {
         setting.setPadding(new Insets(20,20,20,0));
         setting.setSpacing(10);
         setting.setAlignment(Pos.CENTER);
-        setting.setPrefSize(400, 400);
+        setting.setPrefSize(400, 500);
         setting.setBackground(new Background(background));
 
         return setting;
