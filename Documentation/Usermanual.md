@@ -16,7 +16,8 @@ The application can be started with the command:
 
 ## Logging in and registering
 
-#### Registering
+### Registering
+
 In case you don't have a username and password readily defined, you can create them by hitting the "Luo uusi tunnus"-button. 
 
 ![Logging in](https://github.com/saarasat/finglish-app-otm-2019/blob/master/Documentation/images/LoggingIn.png)
@@ -29,7 +30,7 @@ You can also define here whether you want the admin-rights by clicking on the "Y
 
 After you have successfully created an account you can click the "Kirjautumiseen"-button and go back to log in. 
 
-#### Logging in
+### Logging in
 
 Here you need to write your username and password and hit the "Kirjaudu" -button in order to get into the app.
 
@@ -41,7 +42,7 @@ As a regular user you will see the following main menu. You can play a quiz game
 
 ![User main menu](https://github.com/saarasat/finglish-app-otm-2019/blob/master/Documentation/images/userMainMenu.png)
 
-#### Gameview
+### Gameview
 
 If you decide to play a game, you will be directed to the game view. 
 - You can choose whichever option you think is correct by clicking that radiobutton. 
@@ -52,7 +53,7 @@ If you decide to play a game, you will be directed to the game view.
 
 ![Game view](https://github.com/saarasat/finglish-app-otm-2019/blob/master/Documentation/images/gameView.png)
 
-#### Deleting your account
+### Deleting your account
 
 You can delete your account by first clicking the "Poista tili"-button and then in the admin view confirm the removal. Your games will no longer show in the Top 10 -list after you delete your account.
 
@@ -62,13 +63,13 @@ You can delete your account by first clicking the "Poista tili"-button and then 
 
 As a admin you have a few additional functions you can do.
 
-#### Adding a question to the game
+### Adding a question to the game
 
 In this view you can add a new question to the game. You will need to define the question and four different answer options. Only one of the options can be right and needs to be repeated in the final field. 
 
 ![addQuestionsView](https://github.com/saarasat/finglish-app-otm-2019/blob/master/Documentation/images/addQuestionsView.png)
 
-#### Deleting other accounts
+### Deleting other accounts
 
 As an admin you have the possibility to delete any account you wish. Be careful however, you can also delete other admins here.
 
