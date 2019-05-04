@@ -4,7 +4,7 @@ Download the file finglishApp.jar
 
 ## Configuration
 
-The program assumes that there is a file called config.properties in the project folder. All the games, users and questions will be saved and read according to that file. 
+The program assumes that there is a file called "config.properties" in the project folder. All the games, users and questions will be saved and read according to that file. The game also has readily defined questions in the file "questions.txt", make sure you have that ready as well.
 
 ## Starting the application
 
@@ -18,7 +18,7 @@ The application can be started with the command:
 
 ### Registering
 
-In case you don't have a username and password readily defined, you can create them by hitting the "Luo uusi tunnus"-button. 
+In case you don't have a username and password, you can create them by hitting the "Luo uusi tunnus"-button. 
 
 ![Logging in](https://github.com/saarasat/finglish-app-otm-2019/blob/master/Documentation/images/LoggingIn.png)
 
@@ -26,13 +26,13 @@ Next up you will see the following view. In order to register, you need to defin
 
 ![Creating a new account](https://github.com/saarasat/finglish-app-otm-2019/blob/master/Documentation/images/creatingAnAccount.png)
 
-You can also define here whether you want the admin-rights by clicking on the "Ylläpitäjä" -checkbox. Administrators can do all the things as any user and in addition delete any account and add questions to the game. 
+You can also define here whether you want the admin-rights by clicking on the "Ylläpitäjä" -checkbox. Administrators can do all the things as a regular user, and in addition delete any account they wish and add questions to the game. 
 
 After you have successfully created an account you can click the "Kirjautumiseen"-button and go back to log in. 
 
 ### Logging in
 
-Here you need to write your username and password and hit the "Kirjaudu" -button in order to get into the app.
+Here you need to write your username and password and hit the "Kirjaudu" -button to get into the app.
 
 ![Logging in](https://github.com/saarasat/finglish-app-otm-2019/blob/master/Documentation/images/LoggingIn.png)
 
@@ -65,7 +65,7 @@ As a admin you have a few additional functions you can do.
 
 ### Adding a question to the game
 
-In this view you can add a new question to the game. You will need to define the question and four different answer options. Only one of the options can be right and needs to be repeated in the final field. 
+In this view you can add a new question to the game. You will need to define the question and four different answer options. Only one of the options can be right and needs to be repeated in the final field. It does not matter which of the four is correct, as long as only one is.
 
 ![addQuestionsView](https://github.com/saarasat/finglish-app-otm-2019/blob/master/Documentation/images/addQuestionsView.png)
 
