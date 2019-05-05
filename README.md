@@ -11,8 +11,6 @@ _A Finnish-English-gaming-app. App teaches people Finnish computer science -term
 
 [Software architecture](https://github.com/saarasat/finglish-app-otm-2019/blob/master/Documentation/Architecture.md)
 
-[First and second releases](https://github.com/saarasat/finglish-app-otm-2019/releases)
-
 [All releases](https://github.com/saarasat/finglish-app-otm-2019/releases)
 
 [User manual](https://github.com/saarasat/finglish-app-otm-2019/blob/master/Documentation/Usermanual.md)
