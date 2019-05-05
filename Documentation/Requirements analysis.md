@@ -27,12 +27,15 @@ An example question can be for instance: _“Mikä on viestistä käytettävä n
 * User will be shown a message of whether they got the question right or wrong 
 * User will be shown the total result of a single game at the end of the game
 
-#### _Additional features for future development_
-#### _Total scores and stats_
+#### Total scores and stats
 
+* Users can check the scoreboard which includes the top 10 total scores of all the players
+
+#### _Additional features for future development_
+
+* _User has the possibility to delete data of their games_
 * _User has the possibility to check the amount of games they have played in total_
 * _User can check the overall score of how many they have gotten right in all games played_
-* _Users can check the scoreboard which includes the top 5 total scores of all the players_
 * _Users can suggest a question to be added in the game_
 
 ### 2. Administrator
