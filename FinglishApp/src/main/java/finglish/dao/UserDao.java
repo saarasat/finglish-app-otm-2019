@@ -1,7 +1,8 @@
 
-
 package finglish.dao;
+
 import finglish.domain.User;
+
 import java.util.ArrayList;
 
 public interface UserDao {

@@ -1,12 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package finglish.ui;
 
 import finglish.domain.GameService;
 import finglish.domain.Question;
+
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
@@ -27,9 +24,7 @@ import javafx.scene.layout.GridPane;
         public Parent getView() {
         
         GridPane setting = new GridPane();
-        
- 
-        
+           
         Label messageLabel = new Label("");
         TextField questionText = new TextField();
         TextField firstOptionText = new TextField();

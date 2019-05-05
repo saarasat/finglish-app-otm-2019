@@ -1,12 +1,12 @@
 
 package finglish.dao;
 
+import finglish.domain.Game;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
-import finglish.domain.Game;
-import finglish.domain.User;
 import java.util.Random;
 
 
@@ -36,14 +36,14 @@ public class FileGameDao implements GameDao {
     }
     
     /**
-    * Generates a serial Id for the game.
+    * Generates a random Id for the game.
     * 
     * @return an Integer value to be used as a game id.
     */
     
     private int generateId() {
         this.random = new Random();
-        return random.nextInt(99999999);
+        return random.nextInt(999999999);
     }
 
     /**
@@ -101,4 +101,5 @@ public class FileGameDao implements GameDao {
             }
         }
     }
+    
 }

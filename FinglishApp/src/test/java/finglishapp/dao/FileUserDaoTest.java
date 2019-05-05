@@ -1,35 +1,28 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package finglishapp.dao;
+
 import finglish.dao.FileUserDao;
 import finglish.dao.UserDao;
+import finglish.domain.User;
+
 import java.io.File;
 import java.io.FileWriter;
-import java.util.List;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
-import org.junit.Rule;
-import org.junit.rules.TemporaryFolder;
-import finglish.domain.User;
 import java.util.ArrayList;
 
-/**
- *
- * @author saarasat
- */
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.Rule;
+import org.junit.rules.TemporaryFolder;
+import static org.junit.Assert.*;
+
+
 public class FileUserDaoTest {
     @Rule
     public TemporaryFolder testFolder = new TemporaryFolder();
     
     File userFile;
-    UserDao userDao;
-    
+    UserDao userDao;    
     
     @Before
     public void setUp() throws Exception {
@@ -38,8 +31,7 @@ public class FileUserDaoTest {
         try(FileWriter file = new FileWriter(userFile.getAbsolutePath())) {
             file.write("1;Käyttäjä;Salasana;1\n");
             file.write("2;Käyttäjä2;Salasana2;0\n");
-        }
-        
+        }        
         userDao = new FileUserDao(userFile.getAbsolutePath());
     }
  

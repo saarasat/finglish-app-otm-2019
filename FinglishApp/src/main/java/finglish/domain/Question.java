@@ -6,11 +6,12 @@ import java.util.Random;
 
 public class Question {
     
+    private int id;
+    private int counter;
+    
     private String question;
     private String[] answerOptions;
     private String correctAnswer;
-    private int id;
-    private int counter;
     
     public Question(int id, String question, String first, String second, String third, String fourth, String correctAnswer) {
         this.id = id;
@@ -127,5 +128,5 @@ public class Question {
     public String toString() {
         return getQuestion();
     }
-  
+    
 }

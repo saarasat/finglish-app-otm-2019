@@ -1,15 +1,16 @@
 
 package finglish.ui;
 
+import finglish.domain.GameService;
+import finglish.domain.Question;
+
 import javafx.geometry.Insets;
+import javafx.geometry.Orientation;
+import javafx.geometry.Pos;
+
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-
-import finglish.domain.GameService;
-import finglish.domain.Question;
-import javafx.geometry.Orientation;
-import javafx.geometry.Pos;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.FlowPane;

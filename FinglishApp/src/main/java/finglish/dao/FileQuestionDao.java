@@ -1,11 +1,12 @@
 
 package finglish.dao;
 
+import finglish.domain.Question;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
-import finglish.domain.Question;
 import java.util.Random;
 
 

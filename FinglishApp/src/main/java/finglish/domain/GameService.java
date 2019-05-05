@@ -1,37 +1,24 @@
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package finglish.domain;
 
-import finglish.domain.Game;
-import finglish.domain.User;
 import finglish.dao.GameDao;
 import finglish.dao.QuestionDao;
 import finglish.dao.UserDao;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class GameService {
     
-    private int accountId;
-    private ArrayList<Game> allGames;
-    private ArrayList<Game> accountsGames;
+    private Game game;
+    private User user;
+    private GameDao gameDao;
+    private QuestionDao questionDao;
+    private UserDao userDao;
+    
     private ArrayList<Question> allQuestions;
     private ArrayList<User> allUsers;
     private ArrayList<Integer> usedIndexes;
-    private Game game;
-    private User user;
-    private QuestionDao questionDao;
-    private GameDao gameDao;
-    private UserDao userDao;
     private Random random;
     private int index;
 
@@ -40,7 +27,6 @@ public class GameService {
         this.gameDao = gameDao;
         this.questionDao = questionDao;
         this.allQuestions = questionDao.getAll();
-        System.out.println(allQuestions.size());
         this.userDao = userDao;
         this.allUsers = userDao.getAll();
         this.user = user;
@@ -171,7 +157,7 @@ public class GameService {
             while (this.usedIndexes.contains(index)) {
                 index = randomizer(i);
             }
-        }      
+        }
         return index;
     }
 
@@ -278,8 +264,4 @@ public class GameService {
         int idOfThePlayer = game.getAccountId();
         return userDao.findById(idOfThePlayer);
     }
-    
-
-
-
 }

@@ -1,12 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package finglish.ui;
 
-
 import finglish.domain.GameService;
+
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
@@ -18,8 +14,7 @@ import javafx.scene.layout.GridPane;
 public class CreateUserView {
 
     private GameService gameService;
-
-    
+  
     public CreateUserView(GameService gameService) {
         this.gameService = gameService;
     }
@@ -81,6 +76,6 @@ public class CreateUserView {
         });  
         
         return setting;
-
     }
+    
 }

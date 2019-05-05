@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package finglish.ui;
 
 import finglish.dao.GameDao;
@@ -31,21 +27,14 @@ import javafx.scene.layout.Region;
 public class AdminView {
     
     private GameService gameService;
-    private UserDao userDao;
     private ArrayList<User> users;
-    private GameDao gameDao;
-    private ArrayList<Game> games;
     private User user;
     private GridPane setting;
-   
-    
 
-    public AdminView (GameService gameService, UserDao userDao, ArrayList<User> users, User user) {
+    public AdminView (GameService gameService, ArrayList<User> users, User user) {
         this.gameService = gameService;
-        this.userDao = userDao;
-        this.users = userDao.getAll();
-        this.user = user;
-       
+        this.users = users;
+        this.user = user;       
     }
     
     public Parent getView() {
@@ -56,25 +45,23 @@ public class AdminView {
         setting.setVgap(10);
         setting.setHgap(10);
         resetUserList();
+        
         if (user.getAdmin() == 1) {
            ScrollPane userScrollbar = new ScrollPane();  
            userScrollbar.setContent(setting);
            BorderPane adminSetting = new BorderPane(userScrollbar);
            adminSetting.setPrefSize(300, 200);
-           return adminSetting;
-            
+           return adminSetting;           
         } else {
-            setting.add(new Label("Haluatko poistaa oman käyttäjätilisi?"),0,2);
-            setting.setPrefSize(400,400);
+            setting.add(new Label("Haluatko poistaa oman käyttäjätilisi?"),1,1);
+            setting.setPrefSize(500,400);
             return setting;
-        }
-        
+        }     
     }
     
     public void resetUserList() {
         
-        setting.getChildren().clear();
-        
+        setting.getChildren().clear();        
 
         if (this.user.getAdmin() == 1) {
             for (int i = 0; i < users.size(); i++) {
@@ -83,14 +70,14 @@ public class AdminView {
         } else {
             for (int i = 0; i < users.size(); i++) {
                 if (users.get(i).getId() == user.getId()) {
-                    setting.add(createUserNode(users.get(i), 0), 0, i+2);
+                    setting.add(createUserNode(users.get(i), 0), 1, i+3);
                 }
             }
-        }
-     
+        } 
     }
     
     public Node createUserNode(User user, int admin) {
+        
         HBox userBox = new HBox(10);
         Label userLabel  = new Label(user.getUsername());
         userLabel.setMinHeight(30);
@@ -114,9 +101,5 @@ public class AdminView {
         userBox.getChildren().addAll(userLabel, spacer, deleteButton);
         return userBox;
     }
-    
-
-
-
     
 }

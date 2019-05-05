@@ -2,6 +2,7 @@
 package finglish.dao;
 
 import finglish.domain.User;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
@@ -36,14 +37,14 @@ public class FileUserDao implements UserDao {
     }
     
     /**
-    * Generates a serial Id for the user.
+    * Generates a random Id for the user.
     * 
     * @return an Integer value to be used as the User id.
     */
     
     private int generateId() {
         this.random = new Random();
-        return random.nextInt(99999999);
+        return random.nextInt(999999999);
 
     }
     
@@ -133,7 +134,6 @@ public class FileUserDao implements UserDao {
             }
         }
         saveNewUser();
-    }
-    
+    } 
     
 }

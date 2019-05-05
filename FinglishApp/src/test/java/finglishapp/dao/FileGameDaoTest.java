@@ -1,30 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package finglishapp.dao;
 
 import finglish.dao.FileGameDao;
-import finglish.dao.GameDao;
 import finglish.domain.Game;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
-import java.util.List;
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 import org.junit.Rule;
 import org.junit.rules.TemporaryFolder;
+import static org.junit.Assert.*;
 
-/**
- *
- * @author saarasat
- */
 public class FileGameDaoTest {
     @Rule
     public TemporaryFolder testFolder = new TemporaryFolder();
@@ -40,8 +29,7 @@ public class FileGameDaoTest {
             file.write("1;1;5;10\n");
             file.write("2;2;8;10\n");
         }     
-        gameDao = new FileGameDao(gameFile.getAbsolutePath());
-        
+        gameDao = new FileGameDao(gameFile.getAbsolutePath());       
     }
     
     @Test
@@ -62,10 +50,10 @@ public class FileGameDaoTest {
         Game game = gameDao.create(new Game(1, 2, 10));
         assertEquals(2, game.getAmountOfCorrectAnswers());
     }
-
-    
+ 
     @After
     public void tearDown() {
         gameFile.delete();
     }
+    
 }

@@ -1,23 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package finglishapp.domain;
 
 import finglish.domain.Game;
 import finglish.domain.GameService;
 import finglish.domain.Question;
 import finglish.domain.User;
+
 import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author saarasat
- */
+
 public class GameServiceTest {
     
     Game game;
@@ -30,12 +24,11 @@ public class GameServiceTest {
     ArrayList<Integer> usedIndexes;
     
     public GameServiceTest() throws Exception {
+        
         this.questionDao = new FakeQuestionDao();
         this.gameDao = new FakeGameDao();
         this.userDao = new FakeUserDao();
-
         
-
         this.questionDao.create(new Question("question1", "first option1", "second option1", "third option1", "fourth option1", "correct answer1"));
         this.questionDao.create(new Question("question2", "first option2", "second option2", "third option2", "fourth option2", "correct answer2"));
         this.questionDao.create(new Question("question3", "first option3", "second option3", "third option3", "fourth option3", "correct answer3"));
@@ -139,13 +132,10 @@ public class GameServiceTest {
         assertEquals("5/10 oikein, aika hyvin jo!", this.gameService.getTotalScore());
     }
     
-    
-    
     @Test
     public void highScoreListIsEmptyIfNoGamesHaveBeenPlayed() {
         assertEquals("", this.gameService.highScoreList());
     }
-
     
     @Test 
     public void highScoreListShowsThreePlayedGamesCorrectly() {
@@ -164,6 +154,5 @@ public class GameServiceTest {
                 + "3. Käyttäjätunnus  0/10" + "\n" + "\n", 
                 this.gameService.highScoreList());
     }
-
 
 }

@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package finglish.ui;
 
 import finglish.dao.FileGameDao;
@@ -16,7 +12,6 @@ import java.io.FileInputStream;
 
 import java.util.ArrayList;
 import java.util.Properties;
-
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -72,8 +67,7 @@ public class FinglishAppUi extends Application {
     
     @Override 
     public void start(Stage startScreen) throws Exception {    
-             
-        
+                    
         // creating the scene for logging in
         VBox loginSetting = createTheSetting();
         VBox loginBox = createTheViewBox();
@@ -96,6 +90,7 @@ public class FinglishAppUi extends Application {
         
         CreateUserView createUserView = new CreateUserView(gameService);
         Scene newUserScene = new Scene(newUserSetting, 700,500);
+
         
         //creating the scene for main menu
         VBox menuSetting = createTheSetting();
@@ -109,7 +104,7 @@ public class FinglishAppUi extends Application {
         
         Scene menuScene = new Scene(menuSetting, 700,500);
   
-     
+        
         //creating the scene for playing
         VBox gameSetting = createTheSetting();
         VBox gameBox = createTheViewBox();
@@ -119,6 +114,7 @@ public class FinglishAppUi extends Application {
         Button endGameButton = new Button("Lopeta peli");
         Scene gameScene = new Scene(gameSetting, 700, 500);
 
+        
         //creating the scene for adding questions
         VBox additionSetting = createTheSetting();        
         VBox additionBox = createTheViewBox();
@@ -136,6 +132,7 @@ public class FinglishAppUi extends Application {
         Button backFromHighScoresButton = new Button("Takaisin");
         
         Scene highScoreScene = new Scene(highScoreSetting,700,500);
+        
         
         //creating the scene for admins
         VBox adminSetting = createTheSetting();
@@ -160,7 +157,7 @@ public class FinglishAppUi extends Application {
                     adminButton.setText("Poista käyttäjätilejä");
                     menuBox.getChildren().addAll(headerCreator("Tervetuloa pelaamaan Finglish Quizia!" + "\n"), playAGameButton, highScoreButton, addAQuestionButton, adminButton, logOutButton);
                 } else {
-                    menuBox.getChildren().addAll(playAGameButton, highScoreButton, adminButton, logOutButton);                    
+                    menuBox.getChildren().addAll(headerCreator("Tervetuloa pelaamaan Finglish Quizia!" + "\n"), playAGameButton, highScoreButton, adminButton, logOutButton);                    
                 }
                 menuSetting.getChildren().add(menuBox);
                 startScreen.setScene(menuScene);
@@ -192,17 +189,18 @@ public class FinglishAppUi extends Application {
             highScoreBox.getChildren().addAll(headerCreator("Top 10 pelit"), highScoreView.getView());
             highScoreSetting.getChildren().addAll(highScoreBox, backFromHighScoresButton);
             startScreen.setScene(highScoreScene);
-        });
-        
+        });   
         
         adminButton.setOnAction((event) -> {
-            AdminView adminView = new AdminView(gameService, userDao, users, user);
+            AdminView adminView = new AdminView(gameService, users, user);
             adminBox.getChildren().addAll(headerCreator("Hallinnoi käyttäjätietoja"), adminView.getView());
-            adminSetting.getChildren().addAll(adminBox, backFromAdminButton);       
+            adminSetting.getChildren().addAll(adminBox, backFromAdminButton);
+            adminSetting.setPrefWidth(500);
             startScreen.setScene(adminScene);
         });
         
         
+        // coming back from different scenes
         endGameButton.setOnAction((event) -> {
             gameService.finishAGame();
             clearTheStage(gameSetting, gameBox, startScreen, menuScene);
@@ -245,6 +243,7 @@ public class FinglishAppUi extends Application {
         });
         
 
+        
         loginSetting.setBackground(new Background(background));
         startScreen.setScene(loginScene);
         startScreen.show();
@@ -253,6 +252,7 @@ public class FinglishAppUi extends Application {
  
     
     private void clearTheStage(VBox setting, VBox box, Stage stage, Scene scene) {
+       
         setting.getChildren().clear();
         box.getChildren().clear();
         stage.setScene(scene);
@@ -277,12 +277,15 @@ public class FinglishAppUi extends Application {
         box.setSpacing(10);
         box.setPrefHeight(300);
         box.setAlignment(Pos.CENTER);
+        
         return box;
     }
     
     private Text headerCreator(String headerText) {
+        
         Text header = new Text(headerText);
         header.setFont(Font.font("verdana", FontPosture.REGULAR, 15));
+        
         return header;
     }
 

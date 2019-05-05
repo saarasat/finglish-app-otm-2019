@@ -1,11 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package finglish.ui;
 
 import finglish.domain.GameService;
+
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
@@ -16,7 +13,6 @@ import javafx.scene.text.Text;
 public class HighScoreView {
    
     private GameService gameService;
-
               
     public HighScoreView(GameService gameService) {
         this.gameService = gameService;
@@ -30,8 +26,7 @@ public class HighScoreView {
         setting.setVgap(10);
         setting.setHgap(10);
         setting.setPrefSize(400, 500);
-
-        
+   
         Text highscores = new Text(this.gameService.highScoreList());
         setting.add(new Label(highscores.getText()), 0, 1);
 
