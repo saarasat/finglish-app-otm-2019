@@ -18,15 +18,15 @@ The UI contains seven different views:
 - Question addition view
 - Admin view for deleting accounts
 
-Each of these have been made as their own scene. All views have also their own classes apart from the Main menu. Main menu has been integrated into the [FinglishAppUi-class](https://github.com/saarasat/finglish-app-otm-2019/blob/master/FinglishApp/src/main/java/finglish/ui/FinglishAppUi.java). The switching between different scenes happens also in the FinglishAppUi. By clicking on different buttons, the according scene will be set to the stage. UI has been separated into its own package finglish.ui.
+Each of these have been made as their own scene. All views have also their own classes apart from the Main menu. Main menu has been integrated into the [FinglishAppUi-class](https://github.com/saarasat/finglish-app-otm-2019/blob/master/FinglishApp/src/main/java/finglish/ui/FinglishAppUi.java). The switching between different scenes happens also in the FinglishAppUi. By clicking on different buttons, the according scene will be set to the stage. UI has been separated into its own package [finglish.ui](https://github.com/saarasat/finglish-app-otm-2019/tree/master/FinglishApp/src/main/java/finglish/ui).
 
-The UI calls for the methods in the GameService-class to perform different functions. 
+The UI calls for the methods in the [GameService-class](https://github.com/saarasat/finglish-app-otm-2019/blob/master/FinglishApp/src/main/java/finglish/domain/GameService.java) to perform different functions. 
 
 ## Application logic
 
-The classes which hold information of the application are Question, Game and User. Each game has ten questions and each game belongs to a single user. A single question can appear in many games. 
+The classes which hold information changing in the application are [Question](https://github.com/saarasat/finglish-app-otm-2019/blob/master/FinglishApp/src/main/java/finglish/domain/Question.java), [Game](https://github.com/saarasat/finglish-app-otm-2019/blob/master/FinglishApp/src/main/java/finglish/domain/Game.java) and [User](https://github.com/saarasat/finglish-app-otm-2019/blob/master/FinglishApp/src/main/java/finglish/domain/User.java). Each game has ten questions and each game belongs to a single user. A single question can appear in many games. 
 
-Main part of the application logic is handled by the GameService-class. It offers several methods that are used during playing and creating games, questions and users. 
+Main part of the application logic is handled by the [GameService-class](https://github.com/saarasat/finglish-app-otm-2019/blob/master/FinglishApp/src/main/java/finglish/domain/GameService.java). It offers several methods that are used during playing and creating games, questions and users. 
 
 For creating new users, questions and games:
 
@@ -48,7 +48,7 @@ For different happenings in the game:
 
 In addition Question-, Game- and User-classes have simple getters and setters for checking the information relating to them. Question-class also handles the shuffling of different answer options.
 
-GameService can access the package finglish.dao which is responsible for permanent keeping of user-, game- and question-data. The interfaces GameDao, UserDao and QuestionDao save and read the text-files, which have the data relating to those classes.
+GameService can access the package [finglish.dao](https://github.com/saarasat/finglish-app-otm-2019/tree/master/FinglishApp/src/main/java/finglish/dao) which is responsible for permanent keeping of user-, game- and question-data. The interfaces [GameDao](https://github.com/saarasat/finglish-app-otm-2019/blob/master/FinglishApp/src/main/java/finglish/dao/GameDao.java), [UserDao](https://github.com/saarasat/finglish-app-otm-2019/blob/master/FinglishApp/src/main/java/finglish/dao/UserDao.java) and [QuestionDao](https://github.com/saarasat/finglish-app-otm-2019/blob/master/FinglishApp/src/main/java/finglish/dao/QuestionDao.java) save and read the text-files, which have the data relating to those classes.
 
 The following architecture applies to GameService and the other classes:
 
@@ -56,13 +56,13 @@ The following architecture applies to GameService and the other classes:
 
 ## Permanent data storage
 
-Package finglish.dao holds the classes GameDao, UserDao and QuestionDao. Out of these, the UserDao has the most methods for saving and also deleting data. At the moment, games and questions can only be created, but users can also be deleted. 
+Package [finglish.dao](https://github.com/saarasat/finglish-app-otm-2019/tree/master/FinglishApp/src/main/java/finglish/dao) holds the classes GameDao, UserDao and QuestionDao. Out of these, the UserDao has the most methods for saving and also deleting data. At the moment, games and questions can only be created, but users can also be deleted. 
 
-The classes act as interfaces for FileGameDao-, FileUser- and FileQuestionDao-classes that read and save information to text-files. They all follow DAO-model and the GameService uses these classes only through the intefaces. Therefore they can be altered or replaced later on, for instance if there would be need to store the information to a database.
+The classes act as interfaces for [FileGameDao-](https://github.com/saarasat/finglish-app-otm-2019/blob/master/FinglishApp/src/main/java/finglish/dao/FileGameDao.java), [FileUser-](https://github.com/saarasat/finglish-app-otm-2019/blob/master/FinglishApp/src/main/java/finglish/dao/FileUserDao.java) and [FileQuestionDao-classes](https://github.com/saarasat/finglish-app-otm-2019/blob/master/FinglishApp/src/main/java/finglish/dao/FileQuestionDao.java) that read and save information to text-files. They all follow DAO-model and the GameService uses these classes only through the intefaces. Therefore they can be altered or replaced later on, for instance if there would be need to store the information to a database.
 
 #### Files
 
-The configuration file "config.properties" defines the names of the files. The data is stored in the following format, all fields separated with ";" :
+The configuration file [config.properties](https://github.com/saarasat/finglish-app-otm-2019/blob/master/FinglishApp/config.properties) defines the names of the files. The data is stored in the following format, all fields separated with ";" :
 
 
 <pre>
@@ -137,11 +137,12 @@ If this works correctly the GameService will return a boolean value "true" to th
 
 #### UI
 
-- The code in the intiating class FinglishAppUi can be hard to follow. Especially alternating between different scenes was complicated and it would call for a little clarification. 
+- The code in the intiating class FinglishAppUi can be hard to follow. Especially alternating between different scenes was complicated and it calls for a little clarification. 
 - In the UI there are different panes utilized and in order to achieve a more uniform outlook, the usage of panes could be harmonized.
-- The main menu could be also created as its class, or at least a method. This would clarify the changes between scenes. 
+- The main menu could be also defined as its own class, or at least a method. This would clarify the changing between scenes. 
 
 #### DAO-classes
 
-- The DAO-classes do not perform full CRUD-functions. Updating information and deleting also games and questions could be added. 
-- At the moment the userId is being generated by randomizing an Integer, instead of creating a serial id. This was done in order to hinder the same id used for different games. This could have happened if a user is created, plays some games and then deleted. Randomizing works fine now, and the chances for having the same id are very minimal. But in case the application would utilize a database, this method for creating ids would need some reconsideration. 
+- The DAO-classes do not perform full CRUD-functions. Updating information and deleting games and questions could be added. 
+- At the moment the userId is being generated by randomizing an Integer, instead of creating a serial id. This was done in order to hinder the same id used for different games. This could have happened if a user is created, plays some games and then deleted. Randomizing works fine now, and the chances for having the same id are very minimal. But in case the application would utilize a database, this method for creating ids would need some reconsideration.
+
