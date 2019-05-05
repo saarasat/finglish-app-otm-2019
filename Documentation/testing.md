@@ -40,7 +40,7 @@ The application has been also tested manually, as a user and as a admin.
 
 #### Installation and configuration 
 
-The application has been downloaded and used in the way as the user manual describes into a Linux-environment. The testing included questions.txt and the config.properties.txt which were required. 
+The application has been downloaded and used in the way as the user manual describes into a Linux-environment. The testing included [questions.txt](https://github.com/saarasat/finglish-app-otm-2019/blob/master/FinglishApp/questions.txt) and the [config.properties.txt](https://github.com/saarasat/finglish-app-otm-2019/blob/master/FinglishApp/config.properties) which were required. 
 
 The application has been tested in situations when there are no readymade users.txt and games.txt -files as well as in the situation, where those files exist. 
 
