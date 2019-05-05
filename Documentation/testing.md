@@ -47,4 +47,4 @@ The application has been tested in situations when there are no readymade users.
 
 #### Functions
 
-All the functions described in the Requirements analysis have been gone through. Additionally different patterns have been tested, for instance when a new user is created, plays games, then checks the highscores, deletes their account, creates an account with the same username etc. Both user- and admin-functions have been checked. In-valid inputs have been tested is creating an account and creating new questions. 
+All the functions described in the [Requirements analysis](https://github.com/saarasat/finglish-app-otm-2019/blob/master/Documentation/Requirements%20analysis.md) have been gone through. Additionally different patterns have been tested, for instance when a new user is created, plays games, then checks the highscores, deletes their account, creates an account with the same username etc. Both user- and admin-functions have been checked. Invalid inputs have been tested is creating an account and creating new questions. 
