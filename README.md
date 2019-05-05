@@ -13,6 +13,8 @@ _A Finnish-English-gaming-app. App teaches people Finnish computer science -term
 
 [First and second releases](https://github.com/saarasat/finglish-app-otm-2019/releases)
 
+[User manual](https://github.com/saarasat/finglish-app-otm-2019/blob/master/Documentation/Usermanual.md)
+
 ## Test credentials
 The app can be logged in with these test credentials:
 
