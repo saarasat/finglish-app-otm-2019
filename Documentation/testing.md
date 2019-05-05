@@ -30,7 +30,7 @@ The three different DAO-interfaces and the File-classes behind them have mainly 
 
 The UI-package has been left out of the automated tests. The instruction coverage of automated tests is 88 % and the branch coverage is 75 %. 
 
-[Test coverage](https://github.com/saarasat/finglish-app-otm-2019/blob/master/Documentation/images/testCoverage.png)
+![Test coverage](https://github.com/saarasat/finglish-app-otm-2019/blob/master/Documentation/images/testCoverage.png)
 
 
 ## System testing
