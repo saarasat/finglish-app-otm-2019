@@ -14,4 +14,8 @@
 | 24.4. | 4     | Solving problems with java-versions and javafx |
 | 25.4. | 10    | Creating functionality for records for permanent keeping, more tests |
 | 26.4. | 4     | Javadocs, code review |
-|<strong>Total</strong>|<strong>52</strong>|| 
+| 2.5   | 10    | Added functionality for highscores, improved DAO-classes |
+| 3.5.  | 10    | Improved appearance, fixes on user deletion, tried working on game deletion |
+| 4.5.  | 10    | Added tests, improved UI working on missing documentation |
+| 5.5.  | 5     | Added final documentation, finalized Javadoc, final release |
+|<strong>Total</strong>|<strong>87</strong>|| 
