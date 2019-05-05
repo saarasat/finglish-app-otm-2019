@@ -88,6 +88,23 @@ for example:
 
 Some of the most important functions described as sequence diagrams:
 
+#### Creating a new user
+
+![Creating a new user](https://github.com/saarasat/finglish-app-otm-2019/blob/master/Documentation/images/sequence_addingANewUser.png)
+
 #### Starting a new game
-![Starting a New Game](https://github.com/saarasat/finglish-app-otm-2019/blob/master/Documentation/images/SequenceDiagram-StartingAGame.png)
+
+![Starting a New Game](https://github.com/saarasat/finglish-app-otm-2019/blob/master/Documentation/images/sequence_startAGame.png)
+
+#### Getting the next question
+
+![Getting the next question](https://github.com/saarasat/finglish-app-otm-2019/blob/master/Documentation/images/sequence_getTheNextQuestion.png)
+
+#### Answering the question correctly
+
+![Answer the question](https://github.com/saarasat/finglish-app-otm-2019/blob/master/Documentation/images/sequence_answerTheQuestionCorrectly.png)
+
+#### Deleting a user
+
+![Deleting a user](https://github.com/saarasat/finglish-app-otm-2019/blob/master/Documentation/images/sequence_deletingAUser.png)
 
