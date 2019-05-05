@@ -28,7 +28,7 @@ The classes which hold information changing in the application are [Question](ht
 
 Main part of the application logic is handled by the [GameService-class](https://github.com/saarasat/finglish-app-otm-2019/blob/master/FinglishApp/src/main/java/finglish/domain/GameService.java). It offers several methods that are used during playing and creating games, questions and users. 
 
-For creating new users, questions and games:
+**For creating new users, questions and games:**
 
 - public boolean public boolean addUser(String username, String password, int adminStatus)
 - public void addQuestion(Question question)
@@ -36,17 +36,17 @@ For creating new users, questions and games:
 - public void startANewGame()
 - public void finishAGame()
 
-For deleting users: 
+**For deleting users:**
 
 - public boolean removeUser(int id)
 
-For different happenings in the game: 
+**For different happenings in the game:**
 
 - public Question getTheNextQuestion()
 - private int randomizer(int i)
 - public void answerTheQuestion(boolean correctness)
 
-In addition Question-, Game- and User-classes have simple getters and setters for checking the information relating to them. Question-class also handles the shuffling of different answer options.
+In addition to these methods for handling the game, Question-, Game- and User-classes have simple getters and setters for checking the information relating to these objects. Question-class also handles the shuffling of different answer options.
 
 GameService can access the package [finglish.dao](https://github.com/saarasat/finglish-app-otm-2019/tree/master/FinglishApp/src/main/java/finglish/dao) which is responsible for permanent keeping of user-, game- and question-data. The interfaces [GameDao](https://github.com/saarasat/finglish-app-otm-2019/blob/master/FinglishApp/src/main/java/finglish/dao/GameDao.java), [UserDao](https://github.com/saarasat/finglish-app-otm-2019/blob/master/FinglishApp/src/main/java/finglish/dao/UserDao.java) and [QuestionDao](https://github.com/saarasat/finglish-app-otm-2019/blob/master/FinglishApp/src/main/java/finglish/dao/QuestionDao.java) save and read the text-files, which have the data relating to those classes.
 
