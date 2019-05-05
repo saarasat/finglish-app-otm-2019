@@ -1,6 +1,7 @@
 # Testing
 
-The application has been tested with automatized unit tests and integration tests using JUnit. The application has also been extensively tested manually, so that different user-scenarios would be covered. 
+The application has been tested with [automatized](https://github.com/saarasat/finglish-app-otm-2019/tree/master/FinglishApp/src/test/java/finglishapp) unit tests and integration tests using JUnit. The application has also been extensively tested manually, so that different user-scenarios would be covered. 
+
 
 ## Unit and integration tests
 
@@ -15,6 +16,7 @@ The classes checking these:
 - QuestionTest
 - UserText
 
+
 #### DAO
 
 The three different DAO-interfaces and the File-classes behind them have mainly been tested with integration tests. Temporary folders and text-files have been created to simulate the function of the actual DAO-classes. These temporary files are deleted after testing. DAO-tests are the following:
@@ -23,19 +25,23 @@ The three different DAO-interfaces and the File-classes behind them have mainly 
 - FileQuestionDaoTest
 - FileUserDaoTest
 
+
 #### Test coverage
 
 The UI-package has been left out of the automated tests. The instruction coverage of automated tests is and the branch coverage is 
 
+
 ## System testing
 
 The application has been also tested manually, as a user and as a admin. 
+
 
 #### Installation and configuration 
 
 The application has been downloaded and used in the way as the user manual describes into a Linux-environment. The testing included questions.txt and the config.properties.txt which were required. 
 
 The application has been tested in situations when there are no readymade users.txt and games.txt -files as well as in the situation, where those files exist. 
+
 
 #### Functions
 
