@@ -4,7 +4,7 @@ Download the file finglishApp.jar
 
 ## Configuration
 
-The program assumes that there is a file called [config.properties](https://github.com/saarasat/finglish-app-otm-2019/blob/master/FinglishApp/config.properties) in the project folder. All the games, users and questions will be saved and read according to that file. The game also has readily defined questions in the file [questions.txt](https://github.com/saarasat/finglish-app-otm-2019/blob/master/FinglishApp/questions.txt), make sure you have that ready as well.
+The program assumes that there is a file called [config.properties](https://github.com/saarasat/finglish-app-otm-2019/blob/master/FinglishApp/config.properties) in the project folder. All the games, users and questions will be saved and read according to that file. The game also has readily defined questions in the file [questions.txt](https://github.com/saarasat/finglish-app-otm-2019/blob/master/FinglishApp/questions.txt) and background in the file [backgroundimage.png](https://github.com/saarasat/finglish-app-otm-2019/blob/master/FinglishApp/backgroundimage.png), make sure you have those ready as well.
 
 ## Starting the application
 
