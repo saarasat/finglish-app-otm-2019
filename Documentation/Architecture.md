@@ -95,7 +95,6 @@ Here follows some of the most important functions described as sequence diagrams
 - The player writes in the username and password they wish to use. Both of these will be validated, so that they are of the correct length. The password is also confirmed. 
 - When the inputs have been validated the UI calls for the GameService to add the user. The GameService then checks that the username is unique by trying to find it with the help of the UserDao. 
 - If the username is unique the GameService will create a new User-object.
-
 - This User-object will be used as a parameter when the GameService calls for the UserDao to create the user. 
 - UserDao creates a random id for the User, sets it to the User-object and saves the new user to the text-file. 
 - If the user is successfully added, it will be returned to the UserDao, which in returns the boolean value "true" to the GameService. 
@@ -104,39 +103,53 @@ Here follows some of the most important functions described as sequence diagrams
 ![Creating a new user](https://github.com/saarasat/finglish-app-otm-2019/blob/master/Documentation/images/sequence_addingANewUser.png)
 
 
+
 #### Starting a new game
 
-A user clicks the "Pelaa"-button in the main menu which starts the process. The UI then initializes the GameView, which in turn tells the GameService to start a new Game. GameService creates a new Game-object. It also sets the id of the user playing as the accountId of the game, for future storing. 
-
-UI then tells the GameService to the next question to show to the player. A randomizer-method is used to get a random Integer-value. The question with this Integer-value as index of the question-ArrayList, will be chosen as the next question. The GameService next checks that the game has not exceeded the 10-question-limit. The GameService will then call for the question to shuffle its answer options, increases the question counter of the game by one and returns the selected question to the UI. 
-
-UI will then use the showQuestion() method to present the question to the player and sets gameScene to the Stage.
+- The player clicks the "Pelaa"-button in the main menu which starts the process. 
+- The UI then initializes the GameView, which in turn tells the GameService to start a new Game. 
+- GameService creates a new Game-object. It also sets the id of the user playing as the accountId of the game, for future storing. 
+- UI then calls for the GameService to give the first question to show to the player. 
+- A randomizer-method is used to get a random Integer-value. The question with this Integer-value as index of the question-ArrayList, will be chosen as the next question. 
+- The GameService next checks that the game has not exceeded the 10-question-limit. The GameService will then call for the question to shuffle its answer options, increases the question counter of the game by one and returns the selected question to the UI. 
+- UI will then use the showQuestion()-method to present the question to the player and sets gameScene to the Stage.
 
 ![Starting a New Game](https://github.com/saarasat/finglish-app-otm-2019/blob/master/Documentation/images/sequence_startAGame.png)
 
+
+
 #### Getting the next question
 
-Will be done as described in the previous section. If the question counter of the game is already at 10 (thus, the maximum amount of questions for a game) a null value is returned.
+- Will be done as described in the previous section. 
+- If the question counter of the game is already at 10 (thus, the maximum amount of questions for a game) a null value is returned.
 
 ![Getting the next question](https://github.com/saarasat/finglish-app-otm-2019/blob/master/Documentation/images/sequence_getTheNextQuestion.png)
 
+
+
 #### Answering the question correctly
 
-Firstly the player interacts with the GameView and clicks on one of the radiobuttons. The UI then checks the text on that radiobutton and feeds it as a parameter to the checkIfCorrect-method when calling for the question at hand. The question will then match this option with the correct answer of the question, and if and when they are equal, return a boolean value "true".
-
-UI will then notify the player by setting the answerCheck-Text as "Yay, oikein!". Then the UI will notify the GameService to increase the correct answer value of the game with one.
+- Firstly the player interacts with the GameView and clicks on one of the radiobuttons. 
+- The UI feeds the text on that radiobutton as a parameter to the checkIfCorrect-method and calls for the Question-object to see if it was correct. 
+- The Question will then match this option with the correct answer of the question, and if and when they are equal, return a boolean value "true".
+- UI will then notify the player by setting the answerCheck-Text as "Yay, oikein!". Then the UI will notify the GameService to increase the correct answer value of the game with one.
 
 ![Answer the question](https://github.com/saarasat/finglish-app-otm-2019/blob/master/Documentation/images/sequence_answerTheQuestionCorrectly.png)
 
+
+
 #### Deleting a user
 
-Firstly the player clicks on the deleteButton of the user-account the wish to delete. The UI will then check the id of this user-account by getting it from the User-object. 
-
-UI will then call for the GameService with the method removeUser() and feeds the user id as a parameter. GameService in turn will call for the userDao to first check that the user still exists and if so, then calls for UserDao to the delete the user with this id. UserDao removes the user from the list of users and saves the new, updated list into the userFile.
-
-If this works correctly the GameService will return a boolean value "true" to the UI which in turn resets the userlist shown to the player. 
+- Firstly the player clicks on the deleteButton of the user-account they wish to delete.
+- The UI will then check the id of this user-account by getting it from the User-object. 
+- UI will then call for the GameService with the method removeUser() and feeds the user id as a parameter. 
+- GameService in turn will call for the userDao to first check that the user still exists and if so, then calls for the UserDao to delete the user with this id. 
+- UserDao removes the user from the list of users and saves the new, updated list into the userFile.
+- If this works correctly the GameService will return a boolean value "true" to the UI which in turn resets the userlist shown to the player. 
 
 ![Deleting a user](https://github.com/saarasat/finglish-app-otm-2019/blob/master/Documentation/images/sequence_deletingAUser.png)
+
+
 
 ## Weaknesses in structure
 
@@ -148,6 +161,6 @@ If this works correctly the GameService will return a boolean value "true" to th
 
 #### DAO-classes
 
-- The DAO-classes do not perform full CRUD-functions. Updating information and deleting games and questions could be added. 
-- At the moment the userId is being generated by randomizing an Integer, instead of creating a serial id. This was done in order to hinder the same id used for different games. This could have happened if a user is created, plays some games and then deleted. Randomizing works fine now, and the chances for having the same id are very minimal. But in case the application would utilize a database, this method for creating ids would need some reconsideration.
+- The DAO-classes do not perform full [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete). Updating information and deleting games and questions could be added. 
+- At the moment the userId is being generated by randomizing an Integer, instead of creating a serial id. This was done in order to hinder the same id used for different games. This could have happened if a user is created, plays some games and then the account is deleted. Randomizing works fine now, and the chances for having the same id are very minimal. But in case the application would utilize a database, this method for creating ids would need some reconsideration.
 
