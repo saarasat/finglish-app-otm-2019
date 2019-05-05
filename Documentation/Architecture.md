@@ -2,7 +2,7 @@
 
 ## Structure
 
-Structure of the program follows a three-level architecture model and the packages are as follows:
+The structure of the program follows a three-level architecture model and the packages are as follows:
 
 ![Packages](https://github.com/saarasat/finglish-app-otm-2019/blob/master/Documentation/images/Packages.png)
 
@@ -18,7 +18,7 @@ The UI contains seven different views:
 - Question addition view
 - Admin view for deleting accounts
 
-Each of these have been made as their own scene. All other views have their own classes apart from main menu. Main menu has been integrated into the FinglishAppUi-class where also switching between different scenes happens. By clicking on different buttons, the according scene will be set to the stage. UI has been separated into its own package finglish.ui.
+Each of these have been made as their own scene. All views have also their own classes apart from the Main menu. Main menu has been integrated into the [FinglishAppUi-class](https://github.com/saarasat/finglish-app-otm-2019/blob/master/FinglishApp/src/main/java/finglish/ui/FinglishAppUi.java). The switching between different scenes happens also in the FinglishAppUi. By clicking on different buttons, the according scene will be set to the stage. UI has been separated into its own package finglish.ui.
 
 The UI calls for the methods in the GameService-class to perform different functions. 
 
