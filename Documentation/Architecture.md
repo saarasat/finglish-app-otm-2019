@@ -88,13 +88,18 @@ for example:
 
 ## The main functions
 
-Some of the most important functions described as sequence diagrams:
+Here follows some of the most important functions described as sequence diagrams.
 
 #### Creating a new user
 
-A user writes in the username they wish to use as well as the password. Both of these will be validated, so that they are of the correct length. The password is also confirmed. When the inputs have been validated the UI calls for GameService to add the user. The GameService then checks that the username is unique by trying to find it with the help of the UserDao. If the username is unique the GameService will create a new User-object.
+- The player writes in the username and password they wish to use. Both of these will be validated, so that they are of the correct length. The password is also confirmed. 
+- When the inputs have been validated the UI calls for the GameService to add the user. The GameService then checks that the username is unique by trying to find it with the help of the UserDao. 
+- If the username is unique the GameService will create a new User-object.
 
-This User-object will be used as a parameter when the GameService calls for the UserDao to create the user. UserDao creates a random id for the User, sets it to the User-object and saves the new user to the text-file. If the user is successfully added, it will ve returned to the UserDao, which in return return boolean value "true" to the GameService. This way the GameService knows to show success-message to the Player and encourage them to log in. 
+- This User-object will be used as a parameter when the GameService calls for the UserDao to create the user. 
+- UserDao creates a random id for the User, sets it to the User-object and saves the new user to the text-file. 
+- If the user is successfully added, it will be returned to the UserDao, which in returns the boolean value "true" to the GameService. 
+- This way the GameService knows to show success-message to the Player and encourage them to log in. 
 
 ![Creating a new user](https://github.com/saarasat/finglish-app-otm-2019/blob/master/Documentation/images/sequence_addingANewUser.png)
 
